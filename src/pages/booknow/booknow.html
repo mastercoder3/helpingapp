@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Book now <span> <ion-icon name="md-checkmark" (tap)="book()"></ion-icon></span></ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list class="profile bg-thime">
+        <ion-item class=" bg-thime">
+            <ion-avatar item-start>
+                <img src="assets/imgs/profile2.png">
+            </ion-avatar>
+            <h2 class="text-white">Alex John <span> | Plumber</span></h2>
+            <p class="text-white">Tab. Wash Basin and sink Problem</p>
+        </ion-item>
+    </ion-list>
+    
+
+    <div class="form">
+        <ion-list no-lines>
+
+                <ion-item> 
+                        <ion-label >Date:</ion-label>
+                        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="date"></ion-datetime>
+                </ion-item>
+
+            <ion-item class="select-box">
+                <ion-label>Time:</ion-label>
+                <ion-datetime 
+                    (ionCancel)="date=undefined" displayFormat="HH:mm" [(ngModel)]="time"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+                <ion-label class="text-grey" floating>Full Address</ion-label>
+                <ion-input type="text" [(ngModel)]="address"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>City</ion-label>
+                <ion-input type="text" [(ngModel)]="city"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

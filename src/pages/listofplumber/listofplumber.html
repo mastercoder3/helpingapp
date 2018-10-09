@@ -1,0 +1,33 @@
+<ion-header class="bg-thime">
+    <ion-navbar>
+        <ion-title> <span><ion-icon name="md-search"></ion-icon></span></ion-title>
+    </ion-navbar>
+
+    <ion-list no-lines>
+        <ion-item>
+            <h1 style="color: white">{{subCatName}}</h1>
+        </ion-item>
+    </ion-list>
+</ion-header>
+
+<ion-content class="bg-light">
+    <ion-list no-lines>
+        <div *ngFor="let item of workers">
+        <ion-item class="" (click)="plumberprofile(item)">
+            <ion-avatar item-start>
+                <img src="{{item.imageURL}}">
+            </ion-avatar>
+            <h2>
+                <span class="text-ellipsis">{{item.firstName}} </span>
+                <span class="text-light-grey small">&nbsp; | {{item.jobTitle}}</span>
+                <span class="ml-auto small text-green">4.1  <ion-icon name="md-star"></ion-icon> <small>(121)</small></span>
+            </h2>
+            <p class="text-grey">
+                <span class="text-ellipsis">
+                    <img src="assets/imgs/ruppes-icon.png"> {{item.rate}} / per hover
+                </span>
+                <span class="ml-auto text-ellipsis">2.0 km away</span></p>
+        </ion-item>
+    </div>
+    </ion-list>
+</ion-content>

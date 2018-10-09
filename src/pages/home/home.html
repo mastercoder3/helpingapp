@@ -1,0 +1,41 @@
+<ion-header class="bg-transparent ">
+    <ion-navbar>
+        <ion-title>
+            <ion-icon name="pin" class="text-white pin-icon"></ion-icon>
+            <span class="city" style="margin-left: 0 !important;">
+                <ion-label class="text-white">Location For service</ion-label>
+                <ion-icon name="ios-arrow-down-outline"></ion-icon>
+                <ion-select [(ngModel)]="city" class="text-white select-city">
+                    <ion-option value="Mumbai" class="text-ellipsis">Mumbai, Bandra </ion-option>
+                    <ion-option value="Delhi" class="text-ellipsis">Delhi</ion-option>
+                </ion-select>
+            </span>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="banner">
+        <img src="assets/imgs/banner.jpg">
+        <h1 class="text-white">How Can We Help You Today?</h1>
+    </div>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Search for service"></ion-searchbar>
+    <ion-list>
+        <ion-item *ngFor="let item of items">
+            {{ item }}
+        </ion-item>
+    </ion-list>
+    <!--    <img src="../../assets/imgs/05.png" (click)="category()">-->
+
+
+    <div class="home-menu">
+        <ion-row>
+            <ion-col col-4 *ngFor="let item of categories">
+                <div class="menu-item" (tap)='selectedCategory(item)'>
+                    <img src="{{item?.imageURL || image}}">
+                    <p class="text-ellipsis">{{item?.name}}</p>
+                </div>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>
