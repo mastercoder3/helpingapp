@@ -28,20 +28,15 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'completed'" no-lines>
-            <ion-item class="approved" (click)="booking()">
+                <div *ngFor="let item of completedPosts">
+            <ion-item class="completed">
                 <ion-avatar item-start>
-                    <img src="assets/imgs/profile1.png">
+                    <img src="{{item?.imageURL}}">
                 </ion-avatar>
-                <h2><span class="text-ellipsis">Alex John</span><span class="text-light-grey small">&nbsp; | Plumber</span> <span class="ml-auto small">Approved</span></h2>
-                <p class="text-grey"><span class="text-ellipsis"><img src="assets/imgs/ruppes-icon.png"> 250 / per hover</span> <span class="ml-auto text-ellipsis">21<sup>st</sup> jan, 09:00 - 11:00</span></p>
+                <h2><span class="text-ellipsis">{{item?.workerName}}</span><span class="text-light-grey small">&nbsp; | {{item?.jobTitle}}</span> <span class="ml-auto small">{{item?.postStatus}}</span></h2>
+                <p class="text-grey"><span class="text-ellipsis"><img src="assets/imgs/ruppes-icon.png"> 250 / per hover</span> <span class="ml-auto text-ellipsis">{{item?.date}}, {{item?.time}}</span></p>
             </ion-item>
-            <ion-item class="in-process" (click)="booking()">
-                <ion-avatar item-start>
-                    <img src="assets/imgs/profile4.png">
-                </ion-avatar>
-                <h2><span class="text-ellipsis">Beena Smith</span><span class="text-light-grey small">&nbsp; | Plumber</span> <span class="ml-auto small">In process</span></h2>
-                <p class="text-grey"><span class="text-ellipsis"><img src="assets/imgs/ruppes-icon.png"> 200 / per hover</span> <span class="ml-auto text-ellipsis">21<sup>st</sup> jan, 09:00 - 11:00</span></p>
-            </ion-item>
+        </div>
         </ion-list>
     </div>
     <!--    <img src="../../assets/imgs/14.png" (click)="booking()">-->

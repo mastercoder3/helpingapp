@@ -13,7 +13,7 @@
                 <img src="{{post?.imageURL}}">
             </ion-avatar>
             <h2 class=""><strong class="text-ellipsis">{{post?.workerName}}</strong> <span> | {{post?.jobTitle}}</span>
-                <ion-icon name="md-text" class="text-thime"></ion-icon>
+                <!-- <ion-icon name="md-text" class="text-thime"></ion-icon> -->
             </h2>
             <div class="details">   
 
@@ -40,7 +40,7 @@
                 <button ion-button icon-start full><ion-icon name="md-refresh"></ion-icon>Reschedule</button>
             </ion-col> -->
             <ion-col col-6>
-                <button ion-button icon-start full><ion-icon name="md-person"></ion-icon>View Profile</button>
+                <button ion-button icon-start full (tap)="profile()" ><ion-icon name="md-person" ></ion-icon>View Profile</button>
             </ion-col>
         </ion-row>
     </div>
@@ -54,19 +54,18 @@
                     </h4>
                 </div>
             </ion-item>
-            <ion-item class="disable">
+            <ion-item [class.active]="post?.postStatus == 'inprocess' " [class.disable]="post?.postStatus != 'inprocess' ">
                 <span item-start class="circle"></span>
                 <div class="text">
                     <h4 class="text-ellipsis">Job In process
-                        <small>Job Started on 20<sup>th</sup> Jan, 09:00 - 11:00</small>
                     </h4>
                 </div>
             </ion-item>
-            <ion-item class="disable">
+            <ion-item [class.active]="post?.postStatus == 'completed' " [class.disable]="post?.postStatus != 'completed' ">
                 <span item-start class="circle"></span>
                 <div class="text">
                     <h4 class="text-ellipsis">Job Finished
-                        <small>Job Completed on 12:30 | <span>Client Reviewed <span class="text-green"> 4 <ion-icon name="md-star"></ion-icon></span></span></small>
+                       
                     </h4>
                 </div>
             </ion-item>

@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {map} from 'rxjs/operators';
 
 import { ApiProvider } from '../../providers/api/api';
+import { PlumberprofilePage } from '../plumberprofile/plumberprofile';
 
 @Component({
   selector: 'page-booking',
@@ -30,6 +31,12 @@ export class BookingPage {
       .subscribe(res => {
         this.post = res;
       })
+  }
+
+  profile(){
+    this.navCtrl.push(PlumberprofilePage, {
+      id: this.post.workerId
+    })
   }
 
 }

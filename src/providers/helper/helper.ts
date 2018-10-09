@@ -13,14 +13,22 @@ export class HelperProvider {
   constructor(private alertController: AlertController) {
   }
 
-  showPrompt() {
+  showPrompt(title,msg,i1,n1,i2,n2,i3,n3,myfunc) {
     const prompt = this.alertController.create({
-      title: 'Login',
-      message: "Enter a name for this new album you're so keen on adding",
+      title: title,
+      message: msg,
       inputs: [
         {
-          name: 'title',
-          placeholder: 'Title'
+          name: i1,
+          placeholder: n1
+        },
+        {
+          name: i2,
+          placeholder: n2
+        },
+        {
+          name: i3,
+          placeholder: n3
         },
       ],
       buttons: [
@@ -32,9 +40,7 @@ export class HelperProvider {
         },
         {
           text: 'Save',
-          handler: data => {
-            console.log('Saved clicked');
-          }
+          handler: myfunc
         }
       ]
     });

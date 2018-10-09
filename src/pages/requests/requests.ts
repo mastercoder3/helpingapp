@@ -11,6 +11,7 @@ import { ApiProvider } from '../../providers/api/api';
 export class RequestsPage implements OnInit{
   requests: string = "pending";
   posts;
+  completedPosts;
   constructor(public navCtrl: NavController, private api: ApiProvider) {
 
   } 
@@ -29,7 +30,19 @@ export class RequestsPage implements OnInit{
 
       .subscribe(res => {
         this.posts = res;
-      })
+      });
+
+      this.api.getCompletedPosts(id)
+      .pipe(map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const did = a.payload.doc.id;
+        return {did, ...data};
+      })))
+
+      .subscribe(res => {
+        this.completedPosts = res;
+      });
+
   }
 
  booking(item){

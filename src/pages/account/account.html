@@ -11,7 +11,7 @@
                 <img src="{{user?.imageURL || image}}" alt="user Image">
             </ion-avatar>
             <h2><span class="text-ellipsis">{{user?.name}}</span>
-                <ion-icon name="md-create" (tap)="edit()"></ion-icon>
+                <!-- <ion-icon name="md-create" (tap)="edit()"></ion-icon> -->
             </h2>
             <p class="text-grey">{{user?.email}}</p>
         </ion-item>
@@ -19,30 +19,6 @@
         <ion-item class="" (click)="manageaddress()">
             <h2>
                 <ion-icon name="ios-pin" class="mr-auto text-thime"></ion-icon> <span class="text-ellipsis">Manage Address</span>
-                <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-            </h2>
-        </ion-item>
-        <ion-item class="" (click)="contact()">
-            <h2>
-                <ion-icon name="ios-mail" class="mr-auto text-thime"></ion-icon> <span class="text-ellipsis">Contact us</span>
-                <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-            </h2>
-        </ion-item>
-        <ion-item class="" (click)="privacy()">
-            <h2>
-                <ion-icon name="md-lock" class="mr-auto text-thime"></ion-icon> <span class="text-ellipsis">Privacy Policy</span>
-                <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-            </h2>
-        </ion-item>
-        <ion-item class="" (click)="about()">
-            <h2>
-                <ion-icon class="mr-auto text-thime"> <img src="assets/imgs/about-icon.png"></ion-icon> <span class="text-ellipsis">About us</span>
-                <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-            </h2>
-        </ion-item>
-        <ion-item class="" (click)="faqs()">
-            <h2>
-                <ion-icon class="mr-auto text-thime"> <img src="assets/imgs/faqs-icon.png"></ion-icon> <span class="text-ellipsis">FAQs & Terms</span>
                 <ion-icon name="ios-arrow-forward-outline"></ion-icon>
             </h2>
         </ion-item>

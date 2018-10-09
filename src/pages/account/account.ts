@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 import {map} from 'rxjs/operators';
 
 import { ManageaddressPage } from '../manageaddress/manageaddress';
-import { ContactPage } from '../contact/contact';
-import { PrivacyPage } from '../privacy/privacy';
-import { AboutPage } from '../about/about';
-import { FaqsPage } from '../faqs/faqs';
-import { SigninPage } from '../signin/signin';
 import { ApiProvider } from '../../providers/api/api';
+import { StartPage } from '../startpage/start';
 
 @Component({
   selector: 'page-account',
@@ -45,25 +41,19 @@ export class AccountPage {
   }
 
 
- manageaddress(){
-   this.navCtrl.push(ManageaddressPage);
-   }
-   contact(){
-   this.navCtrl.push(ContactPage);
-   }
-   privacy(){
-   this.navCtrl.push(PrivacyPage);
-   }
-   about(){
-   this.navCtrl.push(AboutPage);
-   }    
-   faqs(){
-   this.navCtrl.push(FaqsPage);
-   }
+  manageaddress(){
+     this.navCtrl.push(ManageaddressPage, {
+       address: this.user.address,
+       city: this.user.city,
+       phone: this.user.phone
+     });
+  }
+ 
 
    signin(){
+     
    localStorage.removeItem('uid');
-   this.navCtrl.push(SigninPage);
+   this.navCtrl.setRoot(StartPage);
    }
 
 }

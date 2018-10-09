@@ -20,6 +20,10 @@ export class ApiProvider {
     return this.afs.doc('customers/'+id).snapshotChanges();
   }
 
+  updateUser(id,data){
+    return this.afs.doc('customers/'+id).update(data);
+  }
+
 
 
   // :::::::::::::::::::::::::::::::::::::: Categories ::::::::::::::::::::::::::::::::::::::::::::
@@ -50,6 +54,10 @@ export class ApiProvider {
 
   getPosts(id){
     return this.afs.collection('posts', ref => ref.where('customerId','==',id).where('status','==','active')).snapshotChanges();
+  }
+
+  getCompletedPosts(id){
+    return this.afs.collection('posts', ref => ref.where('customerId','==',id).where('status','==','completed')).snapshotChanges();
   }
 
   getBooking(id){
