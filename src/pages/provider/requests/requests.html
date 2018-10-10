@@ -1,0 +1,60 @@
+<ion-header class="bg-thime">
+    <ion-navbar>
+        <ion-title>Requests <span><ion-icon name="md-search"></ion-icon></span></ion-title>
+    </ion-navbar>
+    <ion-segment [(ngModel)]="requests">
+        <ion-segment-button value="upcoming">
+            Upcoming
+        </ion-segment-button>
+        <ion-segment-button value="completed">
+            Completed
+        </ion-segment-button>
+    </ion-segment>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div [ngSwitch]="requests">
+        <ion-list *ngSwitchCase="'upcoming'" no-lines>
+                <h2 class="heading">New Job Requests</h2>
+                <div *ngFor="let item of newPosts">
+                    <ion-item class="upcoming" (click)="booking(item)">
+                        <ion-avatar item-start>
+                            <img src="{{item?.imageURL}}">
+                        </ion-avatar>
+                        <h2><span class="text-ellipsis">{{item?.workerName}} </span><span class="ml-auto text-ellipsis">{{item?.date}}, {{item?.time}}</span></h2>
+                        <p class="text-grey text-ellipsis"> <span class="ml-auto">View Order</span></p>
+                    </ion-item>
+                </div>
+
+            <h2 class="heading">Upcoming Accepted Job</h2>
+            
+            <div *ngFor="let item of acceptedPosts">
+                <ion-item class="accepted" (click)="booking(item)">
+                        <ion-avatar item-start>
+                                <img src="{{item?.imageURL}}">
+                            </ion-avatar>
+                            <h2><span class="text-ellipsis">{{item?.workerName}} </span><span class="ml-auto text-ellipsis">{{item?.date}}, {{item?.time}}</span></h2>
+                            <p class="text-grey text-ellipsis"> <span class="ml-auto">View Order</span></p>
+                </ion-item>
+             </div>
+             </ion-list>
+        <ion-list *ngSwitchCase="'completed'" no-lines>
+
+            <ion-item class="accepted" (click)="booking()">
+                <ion-avatar item-start>
+                    <img src="assets/imgs/profile4.png">
+                </ion-avatar>
+                <h2><span class="text-ellipsis">Poul Wiliams</span><span class="ml-auto text-ellipsis">21<sup>st</sup> jan, 09:00 - 11:00</span></h2>
+                <p class="text-grey text-ellipsis"><span class="text-ellipsis">Tab, Wash Basin and sink problem</span> <span class="ml-auto">Accepted</span></p>
+            </ion-item>
+            <ion-item class="accepted" (click)="booking()">
+                <ion-avatar item-start>
+                    <img src="assets/imgs/profile5.png">
+                </ion-avatar>
+                <h2><span class="text-ellipsis">Beena Smith</span><span class="ml-auto text-ellipsis">21<sup>st</sup> jan, 09:00 - 11:00</span></h2>
+                <p class="text-grey text-ellipsis"><span class="text-ellipsis">Tab, Wash Basin and sink problem</span> <span class="ml-auto">Accepted</span></p>
+            </ion-item>
+        </ion-list>
+    </div>
+    <!--    <img src="../../assets/imgs/14.png" (click)="booking()">-->
+</ion-content>

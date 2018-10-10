@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import {SigninPage} from '../signin/signin';
+import {SigninPage as workerSigin}  from './../provider/signin/signin';
 
 @Component({
   selector: 'page-start',
@@ -18,6 +19,10 @@ export class StartPage {
 
   customer(){
     this.navCtrl.push(SigninPage);
+  }
+
+  worker(){
+    this.navCtrl.push(workerSigin);
   }
 
 }

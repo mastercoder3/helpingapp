@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Job Detail</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <ion-list class="profile">
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="{{post?.imageURL}}">
+            </ion-avatar>
+            <h2 class=""><strong class="text-ellipsis">{{post?.workerName}}</strong> <span> | {{post?.jobTitle}}</span>
+                <!-- <ion-icon name="md-text" class="text-thime"></ion-icon> -->
+            </h2>
+            <div class="details">   
+
+                <ion-row>
+                    <ion-col col-6>
+                        <p class=""><small>BooKing for</small><span class="text-ellipsis">{{post?.date}}, {{post?.time}} </span></p>
+                    </ion-col>
+                    <ion-col col-6>
+                        <p class="job-fess"><small>Job fess</small><span class="text-ellipsis"><img src="assets/imgs/ruppes-icon.png">
+                            {{post?.rate}} / per hover</span>
+                        </p>
+                    </ion-col>
+                </ion-row>
+                <p class="job-fess"><small>Address</small><span class="">{{post?.address}} </span></p>
+            </div>
+        </ion-item>
+    </ion-list>
+    <div class="btn-container">
+        <ion-row>
+            <ion-col col-6>
+                <button ion-button icon-start full class="" [disabled]="post?.postStatus == 'inprocess' || post?.postStatus == 'completed' " ><ion-icon name="md-close"></ion-icon>Cance Job</button>
+            </ion-col>
+            <ion-col col-6>
+                <button *ngIf="post?.postStatus == 'pending' " ion-button icon-start full class="text-green" (click)="accept()" ><ion-icon name="ios-checkmark-circle"></ion-icon>Accept</button>
+                <button *ngIf="post?.postStatus == 'accepted' " ion-button icon-start full class="text-green" (click)="start()"><ion-icon name="ios-checkmark-circle"></ion-icon>Start Job</button>
+                <button *ngIf="post?.postStatus == 'inprocess' || post?.postStatus == 'completed' " [disabled]="post?.postStatus == 'completed'" ion-button icon-start full class="text-green" (click)="stop()"><ion-icon name="ios-checkmark-circle"></ion-icon>Finish Job</button>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div class="job-status">
+        <h2>Job Status</h2>
+        <ion-list no-lines>
+            <ion-item [class.active]="post?.postStatus == 'accepted' || post?.postStatus == 'inprocess' || post?.postStatus == 'completed'" [class.disable]="post?.postStatus == 'pending' ">
+                <span item-start class="circle"></span>
+                <div class="text">
+                    <h4 class="text-ellipsis">Booking Accepted
+                    </h4>
+                </div>
+            </ion-item>
+            <ion-item [class.active]="post?.postStatus == 'inprocess' || post?.postStatus == 'completed' " [class.disable]="post?.postStatus == 'pending' || post?.postStatus == 'accepted' ">
+                <span item-start class="circle"></span>
+                <div class="text">
+                    <h4 class="text-ellipsis">Job In process
+                    </h4>
+                </div>
+            </ion-item>
+            <ion-item [class.active]="post?.postStatus == 'completed' " [class.disable]="post?.postStatus == 'pending' || post?.postStatus == 'inprocess' || post?.postStatus == 'accepted'  ">
+                <span item-start class="circle"></span>
+                <div class="text">
+                    <h4 class="text-ellipsis">Job Finished
+                       
+                    </h4>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

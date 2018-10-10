@@ -1,0 +1,78 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>My Profile</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="form box-shadow" padding-top>
+        <ion-list no-lines>
+            <ion-row class="profile">
+                <ion-col col-4>
+                    <div class="img-box">
+                        <img src="{{worker?.imageURL}}">
+                        <ion-icon name="md-camera"></ion-icon>
+                    </div>
+                </ion-col>
+                <ion-col col-8 padding-left>
+                    <ion-item>
+                        <ion-label floating>Your name</ion-label>
+                        <ion-input type="text" placeholder="" value="{{worker?.firstName}}"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <!-- <ion-item>
+                <ion-avatar item-start>
+                    <ion-icon name="md-mail" class="text-thime"></ion-icon>
+                </ion-avatar>
+                <ion-label class="text-grey" floating>Enter Email Id</ion-label>
+                <ion-input type="text" value="alizamplumber@mail.com"></ion-input>
+            </ion-item> -->
+            <ion-item>
+                <ion-avatar item-start style="margin-bottom: 3px; margin-right: 28px;">
+                    <ion-icon name="md-phone-portrait" class="text-thime"></ion-icon>
+                </ion-avatar>
+                <ion-label class="text-grey" floating>Mobile Number</ion-label>
+                <ion-input type="text" value="{{worker?.phone}}"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <div class="your-services box-shadow">
+        <h6>Your Information</h6>
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label>Job Title</ion-label>
+                <!-- <ion-select [(ngModel)]="gaming">
+                    <ion-option value="nes">Plumber</ion-option>
+                    <ion-option value="n64">Nintendo64</ion-option>
+                </ion-select> -->
+                <ion-input type="text" value="{{worker?.jobTitle}}"></ion-input>
+
+            </ion-item>
+            <ion-item>
+                <ion-label>Job Location (City)</ion-label>
+                <ion-input type="text" value="{{worker?.city}}"></ion-input>
+
+            </ion-item>
+            <ion-item>
+                <ion-label>Rate per/hour</ion-label>
+                <ion-input type="text" value="{{worker?.rate}}"></ion-input>
+
+            </ion-item>
+        </ion-list>
+        <!-- <p><span class="text-ellipsis" (click)="selectservice()">Select services you provides</span>
+            <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+        </p> -->
+    </div>
+    <!-- <div class="verification box-shadow">
+        <h6>Document Verification</h6>
+        <h2 class="text-green"><small>Status</small> Verified Profile</h2>
+        <h3 class="text-thime">
+            <ion-icon name="md-download"></ion-icon> <span>Upload Document <small class="text-ellipsis">You can upload any goverment approved ID to verify</small></span></h3>
+    </div> -->
+
+    <button class="btn google" ion-button round full margin-top margin-bottom (click)="update()" >Update</button>
+
+</ion-content>

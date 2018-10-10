@@ -28,6 +28,26 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 
+import {SigninPage as workersignin} from '../pages/provider/signin/signin';
+import {SignupPage as workersignup} from '../pages/provider/signup/signup';
+import {TabsPage as workertabs} from '../pages/provider/tabs/tabs';
+import {RequestsPage as workerrequestpage} from '../pages/provider/requests/requests';
+import { NotificationsPage as workernotification} from '../pages/provider/notifications/notifications';
+import { AboutusPage } from '../pages/provider/aboutus/aboutus';
+import { AccountPage as workeraccount} from '../pages/provider/account/account';
+import { AllreviewPage } from '../pages/provider/allreview/allreview';
+import { BookingPage as workerbooking} from '../pages/provider/booking/booking';
+import { ChatscreenPage as workerchat } from '../pages/provider/chatscreen/chatscreen';
+import { ChatslistPage } from '../pages/provider/chatslist/chatslist';
+import { ConatctusPage } from '../pages/provider/conatctus/conatctus';
+import { ForgotpasswordPage as workerforgotpassword } from '../pages/provider/forgotpassword/forgotpassword';
+import { MyprofilePage } from '../pages/provider/myprofile/myprofile';
+import { PackagesPage } from '../pages/provider/packages/packages';
+import { PurchaseplanPage } from '../pages/provider/purchaseplan/purchaseplan';
+import { ReviewPage } from '../pages/provider/review/review';
+import { SelectservicePage } from '../pages/provider/selectservice/selectservice';
+
+
 //Firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -69,6 +89,25 @@ const firebase = {
     SignupPage,
     SigninPage,
     TabsPage,
+    workersignin,
+    workersignup,
+    workertabs,
+    workerrequestpage,
+    workernotification,
+    AboutusPage,
+    PackagesPage,
+    PurchaseplanPage,
+    ReviewPage,
+    SelectservicePage,
+    workeraccount,
+    workerbooking,
+    workerchat,
+    workerforgotpassword,
+    AllreviewPage,
+    ChatslistPage,
+    ConatctusPage,
+    MyprofilePage
+
   ],
   imports: [
     BrowserModule,
@@ -101,7 +140,25 @@ const firebase = {
     RequestsPage,
     SignupPage,
     SigninPage,
-    TabsPage
+    TabsPage,
+    workersignin,
+    workersignup,
+    workertabs,
+    workerrequestpage,
+    workernotification,
+    AboutusPage,
+    PackagesPage,
+    PurchaseplanPage,
+    ReviewPage,
+    SelectservicePage,
+    workeraccount,
+    workerbooking,
+    workerchat,
+    workerforgotpassword,
+    AllreviewPage,
+    ChatslistPage,
+    ConatctusPage,
+    MyprofilePage
   ],
   providers: [
     StatusBar,
@@ -109,7 +166,8 @@ const firebase = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     ApiProvider,
-    HelperProvider
+    HelperProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

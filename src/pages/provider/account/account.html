@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Account</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="bg-light">
+    <ion-list no-lines>
+        <ion-item class="profile" (click)="myprofile()">
+            <ion-avatar item-start>
+                <img src="{{worker?.imageURL}}">
+            </ion-avatar>
+            <h2><span class="text-ellipsis">{{worker?.firstName}} </span>
+                <span class="small">| {{worker?.jobTitle}}</span>
+                <span class="text-green ml-auto ">Verified</span>
+            </h2>
+            <p class="text-thime">View Profile</p>
+        </ion-item>
+<!-- 
+        <ion-item class="" (click)="packages()">
+            <h2>
+                <ion-icon name="ios-clipboard" class="mr-auto text-thime"></ion-icon> <span class="text-ellipsis">Your Plan</span>
+                <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+            </h2>
+        </ion-item>
+        <ion-item class="" (click)="conatctus()">
+            <h2>
+                <ion-icon name="ios-mail" class="mr-auto text-thime"></ion-icon> <span class="text-ellipsis">Contact us</span>
+                <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+            </h2>
+        </ion-item>
+        <ion-item class="" (click)="privacy()">
+            <h2>
+                <ion-icon name="md-lock" class="mr-auto text-thime"></ion-icon> <span class="text-ellipsis">Privacy Policy</span>
+                <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+            </h2>
+        </ion-item>
+        <ion-item class="" (click)="aboutus()">
+            <h2>
+                <ion-icon class="mr-auto text-thime"> <img src="assets/imgs/about-icon.png"></ion-icon> <span class="text-ellipsis">About us</span>
+                <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+            </h2>
+        </ion-item>
+        <ion-item class="" (click)="faqs()">
+            <h2>
+                <ion-icon class="mr-auto text-thime"> <img src="assets/imgs/faqs-icon.png"></ion-icon> <span class="text-ellipsis">FAQs & Terms</span>
+                <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+            </h2>
+        </ion-item> -->
+
+    </ion-list>
+    <ion-list no-lines>
+        <ion-item class="sign-out" (click)="signin()">
+            <h2 text-center>
+                <strong class="text-ellipsis text-thime" text-center>Sign out</strong>
+
+            </h2>
+        </ion-item>
+    </ion-list>
+</ion-content>

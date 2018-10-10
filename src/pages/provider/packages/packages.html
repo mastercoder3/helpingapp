@@ -1,0 +1,35 @@
+<ion-header class="bg-thime">
+    <ion-navbar>
+        <ion-title>Packages</ion-title>
+    </ion-navbar>
+    <div class="header-text text-white" text-center>
+        <h1 class="text-ellipsis">03</h1>
+        <h2>Leads Remaining today</h2>
+        <p>09 Days left</p>
+    </div>
+</ion-header>
+
+<ion-content class="bg-light">
+    <!--    <img src="assets/imgs/19.png">-->
+    <ion-list no-lines>
+        <h4 class="text-ellipsis">Purchase Plans</h4>
+        <ion-item (click)="purchaseplan()">
+            <h2 class="text-ellipsis">Pemium Plan</h2>
+            <p class="text-ellipsis">Get unlimited leads for a month</p>
+            <h3 class="text-ellipsis" item-end>50$</h3>
+        </ion-item>
+        <ion-item (click)="purchaseplan()">
+            <h2 class="text-ellipsis">Econmy Plan</h2>
+            <p class="text-ellipsis">Get 5 leads everyday for a month</p>
+            <h3 class="text-ellipsis" item-end>30$</h3>
+        </ion-item>
+        <ion-item (click)="purchaseplan()">
+            <h2 class="text-ellipsis">Basic Plan</h2>
+            <p class="text-ellipsis">Get 1 leads everyday for a month</p>
+            <h3 class="text-ellipsis" item-end>10$</h3>
+        </ion-item>
+    </ion-list>
+    <div class="fixed-bottom" text-center (click)="conatctus()">
+        <h5>Need Help?<strong class="text-thime">Contact us</strong></h5>
+    </div>
+</ion-content>

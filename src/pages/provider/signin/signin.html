@@ -1,0 +1,44 @@
+<!--
+<ion-header>
+    <ion-navbar>
+        <ion-title>Signin</ion-title>
+    </ion-navbar>
+</ion-header>
+-->
+
+<ion-content>
+    <div class="logo-box bg-thime">
+        <div class="logo">
+            <img src="assets/imgs/logo.png">
+            <h1 class="text-white">HANDY<span>MAN</span></h1>
+        </div>
+    </div>
+
+    <p class="text-grey" text-center>Sign in or Sign up to continue</p>
+
+    <div class="form">
+        <ion-list inset padding-bottom>
+            <ion-item>
+                <ion-label class="text-grey" floating>Email</ion-label>
+                <ion-input type="email" [(ngModel)]="email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>Password</ion-label>
+                <ion-input type="password" [(ngModel)]="password"></ion-input>
+            </ion-item>
+        </ion-list>
+        <p style="text-align: right"><a >Forgot Password?</a></p>
+        <button class="btn" ion-button round full margin-top margin-bottom (click)="signin()">Continue</button>
+        
+        <div class="social">
+            <p class="text-light-grey" text-center>Or Continue with</p>
+
+            <ion-row>
+                <ion-col col-12>
+                    <button class="btn google" ion-button round full margin-top margin-bottom (click)="signup()" >Sign Up</button>
+                </ion-col>
+            </ion-row>
+        </div>
+
+    </div>
+</ion-content>

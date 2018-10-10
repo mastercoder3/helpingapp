@@ -1,0 +1,65 @@
+<ion-header class="bg-transparent">
+    <ion-navbar>
+        <ion-title>Sign Up</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="form">
+        <form [formGroup]="form" (ngSubmit)="submit(form)">
+        <ion-list no-lines>
+            <ion-item>
+                <ion-avatar item-start>
+                    <ion-icon name="md-person" class="text-thime"></ion-icon>
+                </ion-avatar>
+                <ion-label class="text-grey" floating>Enter Full Name</ion-label>
+                <ion-input type="text" value="" formControlName="firstName" #firstName></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>Enter Your Age</ion-label>
+                <ion-input type="number" formControlName="age" #age></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-avatar item-start>
+                    <ion-icon name="md-phone" class="text-thime"></ion-icon>
+                </ion-avatar>
+                <ion-label class="text-grey" floating>Enter Phone No.</ion-label>
+                <ion-input type="text" formControlName="phone" #phone></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-avatar item-start>
+                    <ion-icon name="md-mail" class="text-thime"></ion-icon>
+                </ion-avatar>
+                <ion-label class="text-grey" floating>Enter Email</ion-label>
+                <ion-input type="email" formControlName="email" #email></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-avatar item-start style="margin-bottom: 3px; margin-right: 28px;">
+                    <ion-icon name="md-key" class="text-thime"></ion-icon>
+                </ion-avatar>
+                <ion-label class="text-grey" floating>Password</ion-label>
+                <ion-input type="password" formControlName="password" #password></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>Select Category</ion-label>
+                <ion-select (ngModelChange)="onChange($event)" formControlName="categoryName" #categoryName>
+                    <ion-option *ngFor="let item of categories" [value]="item.name">{{item.name}}</ion-option>
+                  </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>Job Title</ion-label>
+                <ion-input type="text" formControlName="jobTitle" #jobTitle></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>Enter Rate /per Hour</ion-label>
+                <ion-input type="number" formControlName="rate" #rate></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>About yourself (2-4 lines)</ion-label>
+                <ion-textarea formControlName="detail" #detail></ion-textarea>
+            </ion-item>
+            </ion-list>
+        <button type="submit" class="btn" ion-button round full margin-top margin-bottom [disabled]="form.invalid || form.pristine" >Sign up now</button>
+    </form>
+    </div>
+</ion-content>

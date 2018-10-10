@@ -46,6 +46,10 @@ export class ApiProvider {
     return this.afs.doc('workers/'+id).snapshotChanges();
   }
 
+  updateWorker(id,data){
+    return this.afs.doc('worker/'+id).update(data);
+  }
+
   // ::::::::::::::::::::::::::::: Posts/Orders ::::::::::::::::::::::::::::::::::::::::
 
   createPost(data){
@@ -63,5 +67,24 @@ export class ApiProvider {
   getBooking(id){
     return this.afs.doc('posts/'+id).snapshotChanges();
   }
+
+  updatePost(id,data){
+    return this.afs.doc('posts/'+id).update(data);
+  }
+
+  // ::::::::::::::::::::::::::::::::::::::::::::: Provider ::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+  createUserWorker(id, data){
+    return this.afs.doc('workers/'+id).set(data);
+  }
+
+  getNewPosts(id){
+    return this.afs.collection('posts', ref => ref.where('workerId','==',id).where('postStatus','==','pending')).snapshotChanges();
+  }
+
+  getCurrentPosts(id){
+    return this.afs.collection('posts', ref => ref.where('workerId','==',id).where('postStatus','==','accepted')).snapshotChanges();
+  }
+
 
 }
