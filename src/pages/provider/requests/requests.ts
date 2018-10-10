@@ -13,6 +13,7 @@ requests: string = "upcoming";
 
   newPosts;
   acceptedPosts;
+  completedPosts;
   constructor(public navCtrl: NavController, private api: ApiProvider) {
 
   }
@@ -42,6 +43,17 @@ requests: string = "upcoming";
 
       .subscribe(res =>{
         this.acceptedPosts = res;
+      });
+
+      this.api.getCompletedPosts2(id)
+      .pipe(map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const did = a.payload.doc.id;
+        return {did, ...data};
+      })))
+
+      .subscribe(res => {
+        this.completedPosts = res;
       });
   }
 

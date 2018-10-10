@@ -7,7 +7,7 @@ import { NavController } from 'ionic-angular';
  import { PrivacyPage } from '../privacy/privacy';
  import { AboutusPage } from '../aboutus/aboutus';
  import { FaqsPage } from '../faqs/faqs';
- import { SigninPage } from '../signin/signin';
+import {StartPage} from './../../startpage/start';
 import { ApiProvider } from '../../../providers/api/api';
 import {map} from 'rxjs/operators';
 
@@ -60,7 +60,8 @@ export class AccountPage implements OnInit{
    this.navCtrl.push(FaqsPage);
    } 
    signin(){
-   this.navCtrl.push(SigninPage);
+    localStorage.removeItem('wid');
+    this.navCtrl.setRoot(StartPage);
    }
 
 

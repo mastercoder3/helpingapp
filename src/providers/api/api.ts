@@ -61,7 +61,11 @@ export class ApiProvider {
   }
 
   getCompletedPosts(id){
-    return this.afs.collection('posts', ref => ref.where('customerId','==',id).where('status','==','completed')).snapshotChanges();
+    return this.afs.collection('posts', ref => ref.where('customerId','==',id).where('postStatus','==','completed')).snapshotChanges();
+  }
+
+  getCompletedPosts2(id){
+    return this.afs.collection('posts', ref => ref.where('workerId','==',id).where('postStatus','==','completed')).snapshotChanges();
   }
 
   getBooking(id){
@@ -84,6 +88,16 @@ export class ApiProvider {
 
   getCurrentPosts(id){
     return this.afs.collection('posts', ref => ref.where('workerId','==',id).where('postStatus','==','accepted')).snapshotChanges();
+  }
+
+  // ::::::::::::::::::::::::::::::::::::::::: Review ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+  createReview(data){
+    return this.afs.collection('review').add(data);
+  }
+
+  getReview(id){
+    return this.afs.collection('review', ref => ref.where('workerId','==',id)).snapshotChanges();
   }
 
 

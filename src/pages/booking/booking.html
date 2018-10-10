@@ -34,7 +34,7 @@
     <div class="btn-container">
         <ion-row>
             <ion-col col-6>
-                <button ion-button icon-start full class="disable"><ion-icon name="md-close"></ion-icon>Cancel</button>
+                <button ion-button icon-start full [disabled]="post?.postStatus == 'inprocess' || post?.postStatus == 'completed' " ><ion-icon name="md-close"  ></ion-icon>Cancel</button>
             </ion-col>
             <!-- <ion-col col-4>
                 <button ion-button icon-start full><ion-icon name="md-refresh"></ion-icon>Reschedule</button>
@@ -47,21 +47,21 @@
     <div class="job-status">
         <h2>Job Status</h2>
         <ion-list no-lines>
-            <ion-item [class.active]="post?.postStatus == 'accepted' " [class.disable]="post?.postStatus == 'pending' ">
+            <ion-item [class.active]="post?.postStatus == 'accepted' || post?.postStatus == 'inprocess' || post?.postStatus == 'completed'" [class.disable]="post?.postStatus == 'pending' ">
                 <span item-start class="circle"></span>
                 <div class="text">
                     <h4 class="text-ellipsis">Booking Accepted
                     </h4>
                 </div>
             </ion-item>
-            <ion-item [class.active]="post?.postStatus == 'inprocess' " [class.disable]="post?.postStatus != 'inprocess' ">
+            <ion-item [class.active]="post?.postStatus == 'inprocess' || post?.postStatus == 'completed' " [class.disable]="post?.postStatus == 'pending' || post?.postStatus == 'accepted' ">
                 <span item-start class="circle"></span>
                 <div class="text">
                     <h4 class="text-ellipsis">Job In process
                     </h4>
                 </div>
             </ion-item>
-            <ion-item [class.active]="post?.postStatus == 'completed' " [class.disable]="post?.postStatus != 'completed' ">
+            <ion-item [class.active]="post?.postStatus == 'completed' " [class.disable]="post?.postStatus == 'pending' || post?.postStatus == 'inprocess' || post?.postStatus == 'accepted'  ">
                 <span item-start class="circle"></span>
                 <div class="text">
                     <h4 class="text-ellipsis">Job Finished
@@ -71,4 +71,21 @@
             </ion-item>
         </ion-list>
     </div>
+    <div class="job-status" >
+        <h2>Give your Review</h2>
+        <ion-list no-lines>
+            <ion-item>
+                <bar-rating [theme]="'stars'" [(rate)]="rate" [max]="5" style="margin-left: 50%;"></bar-rating>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>Write Something.</ion-label>
+                <ion-textarea [(ngModel)]="revieww"></ion-textarea>
+            </ion-item>
+        </ion-list>
+       
+
+        <button ion-button full (tap)="review()" [disabled]="post?.review == true ">Submit</button>
+    </div>
+
+
 </ion-content>

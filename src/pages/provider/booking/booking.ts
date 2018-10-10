@@ -66,6 +66,7 @@ export class BookingPage implements OnInit{
     let id = this.post.did;
     delete this.post['did'];
     this.post.postStatus = 'completed';
+    this.post.status = 'completed';
     
     this.api.updatePost(id, this.post)
     .then(res => {
@@ -74,6 +75,7 @@ export class BookingPage implements OnInit{
       let total = ((date.getTime() - time)/1000);
       let calculated = new Date(total * 1000).toISOString().substr(11, 8);
       console.log(calculated);
+
     }, err => {
       console.log(err.message);
     }) 

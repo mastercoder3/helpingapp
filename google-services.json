@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "221396946660",
+    "firebase_url": "https://handyman-ea0e1.firebaseio.com",
+    "project_id": "handyman-ea0e1",
+    "storage_bucket": "handyman-ea0e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221396946660:android:481675fcbac3a26d",
+        "android_client_info": {
+          "package_name": "com.verbosetech.handyman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221396946660-6tgee5kjgi84rec0k7oq6d4or957915m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv8kBz9ImBn4U0G1Rl7fS28AzulilljWA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -29,7 +29,7 @@
 
         <ion-list *ngSwitchCase="'completed'" no-lines>
                 <div *ngFor="let item of completedPosts">
-            <ion-item class="completed">
+            <ion-item class="completed" (click)="booking(item)">
                 <ion-avatar item-start>
                     <img src="{{item?.imageURL}}">
                 </ion-avatar>

@@ -38,22 +38,18 @@
                 </ion-item>
              </div>
              </ion-list>
+
         <ion-list *ngSwitchCase="'completed'" no-lines>
 
-            <ion-item class="accepted" (click)="booking()">
-                <ion-avatar item-start>
-                    <img src="assets/imgs/profile4.png">
-                </ion-avatar>
-                <h2><span class="text-ellipsis">Poul Wiliams</span><span class="ml-auto text-ellipsis">21<sup>st</sup> jan, 09:00 - 11:00</span></h2>
-                <p class="text-grey text-ellipsis"><span class="text-ellipsis">Tab, Wash Basin and sink problem</span> <span class="ml-auto">Accepted</span></p>
-            </ion-item>
-            <ion-item class="accepted" (click)="booking()">
-                <ion-avatar item-start>
-                    <img src="assets/imgs/profile5.png">
-                </ion-avatar>
-                <h2><span class="text-ellipsis">Beena Smith</span><span class="ml-auto text-ellipsis">21<sup>st</sup> jan, 09:00 - 11:00</span></h2>
-                <p class="text-grey text-ellipsis"><span class="text-ellipsis">Tab, Wash Basin and sink problem</span> <span class="ml-auto">Accepted</span></p>
-            </ion-item>
+                <div *ngFor="let item of completedPosts">
+                        <ion-item class="completed" (click)="booking(item)">
+                            <ion-avatar item-start>
+                                <img src="{{item?.imageURL}}">
+                            </ion-avatar>
+                            <h2><span class="text-ellipsis">{{item?.workerName}}</span><span class="text-light-grey small">&nbsp; | {{item?.jobTitle}}</span> <span class="ml-auto small">{{item?.postStatus}}</span></h2>
+                            <p class="text-grey"><span class="text-ellipsis"><img src="assets/imgs/ruppes-icon.png"> 250 / per hover</span> <span class="ml-auto text-ellipsis">{{item?.date}}, {{item?.time}}</span></p>
+                        </ion-item>
+                    </div>
         </ion-list>
     </div>
     <!--    <img src="../../assets/imgs/14.png" (click)="booking()">-->
