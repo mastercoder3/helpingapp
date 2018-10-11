@@ -32,6 +32,7 @@ requests: string = "upcoming";
 
       .subscribe(res =>{
         this.newPosts = res;
+        console.log(res);
       });
 
       this.api.getCurrentPosts(id)

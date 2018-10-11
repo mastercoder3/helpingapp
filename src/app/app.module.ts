@@ -56,6 +56,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ApiProvider } from '../providers/api/api';
 import { HelperProvider } from '../providers/helper/helper';
+import { FcmProvider } from '../providers/fcm/fcm';
+import { Firebase } from '@ionic-native/firebase';
+import { Facebook } from '@ionic-native/facebook'
 
 const firebase = {
   apiKey: "AIzaSyAbZplqw7rUDD2Nha-hkNI8-EAHh0J771c",
@@ -169,7 +172,10 @@ const firebase = {
     AuthProvider,
     ApiProvider,
     HelperProvider,
-    AuthProvider
+    AuthProvider,
+    FcmProvider,
+    Firebase,
+    Facebook
   ]
 })
 export class AppModule {}

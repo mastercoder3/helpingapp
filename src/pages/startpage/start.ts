@@ -4,6 +4,8 @@ import { NavController } from 'ionic-angular';
 import {SigninPage} from '../signin/signin';
 import {SigninPage as workerSigin}  from './../provider/signin/signin';
 
+
+
 @Component({
   selector: 'page-start',
   templateUrl: 'start.html'

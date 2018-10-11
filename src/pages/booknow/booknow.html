@@ -8,10 +8,10 @@
     <ion-list class="profile bg-thime">
         <ion-item class=" bg-thime">
             <ion-avatar item-start>
-                <img src="assets/imgs/profile2.png">
+                <img src="{{user?.imageURL}}">
             </ion-avatar>
-            <h2 class="text-white">Alex John <span> | Plumber</span></h2>
-            <p class="text-white">Tab. Wash Basin and sink Problem</p>
+            <h2 class="text-white">{{user?.firstName}} <span> | {{user?.jobTitle}}</span></h2>
+            <!-- <p class="text-white">Tab. Wash Basin and sink Problem</p> -->
         </ion-item>
     </ion-list>
     

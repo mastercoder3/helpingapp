@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
+import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
 /*
   Generated class for the ApiProvider provider.
 
@@ -24,6 +25,10 @@ export class ApiProvider {
     return this.afs.doc('customers/'+id).update(data);
   }
 
+  getUserCity(id){
+    return this.afs.doc('customers/'+id).snapshotChanges();
+  }
+
 
 
   // :::::::::::::::::::::::::::::::::::::: Categories ::::::::::::::::::::::::::::::::::::::::::::
@@ -38,8 +43,8 @@ export class ApiProvider {
 
   // ::::::::::::::::::::::::::::: get Workers ::::::::::::::::::::::::::::::::::::::::::
 
-  getWorkers(id){
-    return this.afs.collection('workers', ref => ref.where('categoryId','==',id)).snapshotChanges();
+  getWorkers(id,city){
+    return this.afs.collection('workers', ref => ref.where('categoryId','==',id).where('city','==',city)).snapshotChanges();
   }
 
   getWorkerProfile(id){

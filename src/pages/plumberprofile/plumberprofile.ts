@@ -12,6 +12,7 @@ import { ApiProvider } from '../../providers/api/api';
 export class PlumberprofilePage {
 plumber: string = "about";
 worker;
+review;
   constructor(public navCtrl: NavController, private navParams: NavParams, private api: ApiProvider) {
 
   } 
@@ -31,12 +32,25 @@ worker;
 
       .subscribe(res => {
         this.worker = res;
-      })
+      });
+
+      this.api.getReview(id)
+        .pipe(map(actions => actions.map(a=>{
+          const data = a.payload.doc.data();
+          const did = a.payload.doc.id;
+          return {did, ...data};
+        })))
+        .subscribe(res => {
+          this.review = res;
+        })
   }
 
     booknow(){
     this.navCtrl.push(BooknowPage, {
-      workerId: this.worker.did 
+      workerId: this.worker.did,
+      workerName: this.worker.firstName,
+      service: this.worker.jobTitle,
+      category: this.worker.categoryName
     });
     }
     chatscreen(){

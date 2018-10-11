@@ -10,7 +10,8 @@ import { ApiProvider } from '../../providers/api/api';
 })
 export class HomePage {
 
-  city: string = "Mumbai";
+  user;
+  city: string = "";
   categories;
   image: string = './../../../assets/imgs/ic_beauty.png"';
 
@@ -21,10 +22,10 @@ export class HomePage {
   } 
 
   ngOnInit(){
-    this.getData();
+    this.getData(localStorage.getItem('uid'));
   }
 
-  getData(){
+  getData(id){
     this.api.getCategories()
       .pipe(map(actions => actions.map(a => {
         const data = a.payload.doc.data();
@@ -34,7 +35,20 @@ export class HomePage {
 
       .subscribe(res => {
         this.categories = res;
-      })
+      });
+
+      this.api.getUserCity(id)
+        .pipe(map(a => {
+          const data = a.payload.data();
+          return {data};
+        }))
+        .subscribe(res => {
+          this.user = res;
+          this.city = this.user.data.city;
+          localStorage.setItem('city',this.city);
+        })
+
+
   }
 
   selectedCategory(item){

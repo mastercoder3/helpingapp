@@ -24,7 +24,8 @@ export class ListofplumberPage {
   }
 
   getData(id){
-    this.api.getWorkers(id)
+    console.log(id)
+    this.api.getWorkers(id,localStorage.getItem('city'))
       .pipe(map(actions => actions.map(a => {
         const data = a.payload.doc.data();
         const did = a.payload.doc.id;

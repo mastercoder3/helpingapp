@@ -6,9 +6,8 @@
                 <ion-label class="text-white">Location For service</ion-label>
                 <ion-icon name="ios-arrow-down-outline"></ion-icon>
                 <ion-select [(ngModel)]="city" class="text-white select-city">
-                    <ion-option value="Mumbai" class="text-ellipsis">Mumbai, Bandra </ion-option>
-                    <ion-option value="Delhi" class="text-ellipsis">Delhi</ion-option>
-                </ion-select>
+                        <ion-option [value]="city" class="text-ellipsis">{{city}}</ion-option>
+                    </ion-select>
             </span>
         </ion-title>
     </ion-navbar>
