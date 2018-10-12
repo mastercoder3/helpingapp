@@ -26,7 +26,6 @@ export class BooknowPage {
   ngOnInit(){
     this.wrokerId = this.navParams.get('workerId');
     this.workerName = this.navParams.get('workerName');
-    this.service = this.navParams.get('service');
     this.category = this.navParams.get('category');
     this.getData(this.wrokerId);
   }

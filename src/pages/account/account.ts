@@ -53,6 +53,7 @@ export class AccountPage {
    signin(){
      
    localStorage.removeItem('uid');
+   localStorage.removeItem('city');
    this.navCtrl.setRoot(StartPage);
    }
 

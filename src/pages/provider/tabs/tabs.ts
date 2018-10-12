@@ -12,7 +12,7 @@ import { ChatslistPage } from '../chatslist/chatslist';
 export class TabsPage {
 
   tab1Root = RequestsPage;
-  tab2Root = NotificationsPage;
+  // tab2Root = NotificationsPage;
   tab3Root = ReviewPage;
   tab4Root = AccountPage;
   tab5Root = ChatslistPage;

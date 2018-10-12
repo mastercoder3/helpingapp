@@ -53,8 +53,14 @@ review;
       category: this.worker.categoryName
     });
     }
+
     chatscreen(){
-    this.navCtrl.push(ChatscreenPage);
+    this.navCtrl.push(ChatscreenPage, {
+      workerId: this.worker.did,
+      name: this.worker.firstName,
+      service: this.worker.jobTitle,
+      image: this.worker.imageURL
+    });
     }
 
 

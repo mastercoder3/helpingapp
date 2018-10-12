@@ -105,5 +105,26 @@ export class ApiProvider {
     return this.afs.collection('review', ref => ref.where('workerId','==',id)).snapshotChanges();
   }
 
+  // ::::::::::::::::::::::::::::::::::::::::::: CHAT :::::::::::::::::::::::::::::::::::::::::::::
+
+  checkChatIfExistsWorker(id,uid){
+    return this.afs.collection('chat', ref=> ref.where('receiverId','==',id).where('senderId','==',uid)).snapshotChanges();
+  }
+
+  updateChat(id,data){
+    return this.afs.doc('chat/'+id).set(data);
+  }
+
+  createChat(data){
+    return this.afs.collection('chat').add(data);
+  }
+
+  getSenderChats(id){
+    return this.afs.collection('chat', ref=> ref.where('senderId','==',id)).snapshotChanges();
+  }
+
+  getReceiverChats(id){
+    return this.afs.collection('chat', ref=> ref.where('receiverId','==',id)).snapshotChanges();
+  }
 
 }

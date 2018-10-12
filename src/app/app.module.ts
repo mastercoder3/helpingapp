@@ -59,6 +59,8 @@ import { HelperProvider } from '../providers/helper/helper';
 import { FcmProvider } from '../providers/fcm/fcm';
 import { Firebase } from '@ionic-native/firebase';
 import { Facebook } from '@ionic-native/facebook'
+import { ChatProvider } from '../providers/chat/chat';
+import { FilterDatePipe } from '../pipes/filter-date/filter-date';
 
 const firebase = {
   apiKey: "AIzaSyAbZplqw7rUDD2Nha-hkNI8-EAHh0J771c",
@@ -110,7 +112,8 @@ const firebase = {
     AllreviewPage,
     ChatslistPage,
     ConatctusPage,
-    MyprofilePage
+    MyprofilePage,
+    FilterDatePipe
 
   ],
   imports: [
@@ -175,7 +178,9 @@ const firebase = {
     AuthProvider,
     FcmProvider,
     Firebase,
-    Facebook
+    Facebook,
+    ChatProvider,
+    FilterDatePipe
   ]
 })
 export class AppModule {}
