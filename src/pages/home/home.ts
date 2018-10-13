@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 
 import { CategoryPage } from '../category/category';
 import { ApiProvider } from '../../providers/api/api';
+import {PostPage} from '../post/post';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -60,6 +61,10 @@ export class HomePage {
 
   category(){
      
+   }
+
+   newPost(){ 
+     this.navCtrl.push(PostPage)
    }
 
 

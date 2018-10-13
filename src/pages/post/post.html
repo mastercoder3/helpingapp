@@ -1,0 +1,52 @@
+<ion-header class="bg-transparent">
+    <ion-navbar>
+        <ion-title>Create a Post</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="form">
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label class="text-grey" floating>Post Discription</ion-label>
+                <ion-input type="text" value="" [(ngModel)]="post.desc"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>Category</ion-label>
+                <ion-select (ngModelChange)="onChange($event)" [(ngModel)]="selected">
+                    <ion-option *ngFor="let item of categories" [value]="item.name">{{item.name}}</ion-option>
+                  </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>Service Type</ion-label>
+                <ion-input type="text" value="" [(ngModel)]="post.serviceType"></ion-input>
+            </ion-item>
+            
+                    <ion-item> 
+                        <ion-label >Date:</ion-label>
+                        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="post.date"></ion-datetime>
+                </ion-item>
+
+            <ion-item class="select-box">
+                <ion-label>Time:</ion-label>
+                <ion-datetime 
+                    (ionCancel)="date=undefined" displayFormat="HH:mm" [(ngModel)]="post.time"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>Full Address</ion-label>
+                <ion-input type="text" value="" [(ngModel)]="post.address"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>Location (city)</ion-label>
+                <ion-input type="text" value="" [(ngModel)]="post.city"></ion-input>
+            </ion-item>
+        </ion-list>
+        <ion-label class="text-grey">Picture</ion-label>
+        <img [src]="base64Image" alt="Your post picture" *ngIf="base64Image" style="width: 70px; height: 70px;">
+        <button ion-button color="secondary" (click)="takePhoto('library')" style="width: 100%; background-color: #00DE6E !important;">Choose From Gallery</button>
+        <button ion-button color="secondary" (click)="takePhoto('camera')" style="width: 100%; background-color: #00DE6E !important;">Take a Picture</button>
+        <button class="btn" ion-button round full margin-top margin-bottom (click)="submit()">Post</button>
+        <div class="fixed-bottom">
+        </div>
+    </div>
+</ion-content>

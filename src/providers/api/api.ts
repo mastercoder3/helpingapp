@@ -127,4 +127,14 @@ export class ApiProvider {
     return this.afs.collection('chat', ref=> ref.where('receiverId','==',id)).snapshotChanges();
   }
 
+  // ::::::::::::::::::::::::::::::::::::::::::::::::::::: New Posts ::::::::::::::::::::::::::::::::::::::::::::
+
+  createNewPost(data){
+    return this.afs.collection('newposts').add(data);
+  }
+
+  getNewPostsRequests(){
+    return this.afs.collection('newposts', ref => ref.where('status','==','active')).snapshotChanges();
+  }
+
 }

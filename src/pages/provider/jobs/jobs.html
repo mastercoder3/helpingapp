@@ -1,0 +1,22 @@
+<ion-header class="bg-thime">
+    <ion-navbar>
+        <ion-title>Jobs <span><ion-icon name="md-search"></ion-icon></span></ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+
+        <ion-list no-lines>
+                <h2 class="heading">New Job Requests</h2>
+                <div *ngFor="let item of newPosts">
+                    <ion-item class="upcoming" (click)="JobDetails(item)">
+                        <ion-avatar item-start>
+                            <img src="{{item?.customerImage}}">
+                        </ion-avatar>
+                        <h2><span class="text-ellipsis">{{item?.customerName}} </span><span class="ml-auto text-ellipsis">{{item?.date}}, {{item?.time}}</span></h2>
+                        <p class="text-grey text-ellipsis"> <span class="ml-auto">View Order</span></p>
+                    </ion-item>
+                </div>
+        </ion-list>
+
+</ion-content>

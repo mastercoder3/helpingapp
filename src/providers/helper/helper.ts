@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 
 /*
@@ -11,7 +11,9 @@ import { ToastController } from 'ionic-angular';
 @Injectable()
 export class HelperProvider {
 
-  constructor(private alertController: AlertController,private toastCtrl: ToastController) {
+  loading;
+
+  constructor(private alertController: AlertController,private toastCtrl: ToastController, private loadingCtrl: LoadingController) {
   }
 
   showPrompt(title,msg,i1,n1,i2,n2,i3,n3,myfunc) {
@@ -62,6 +64,19 @@ export class HelperProvider {
     toast.present();
   }
 
+  presentLoadingDefault() {
+     this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    this.loading.present();
+
+  }
+
+  closeLoading(){
+    this.loading.dismiss();
+  }
+  
   
 
 

@@ -13,6 +13,7 @@ export class SignupPage {
 
   } 
  tabs(){
+
     this.navCtrl.push(TabsPage);
     }
     forgotpassword(){

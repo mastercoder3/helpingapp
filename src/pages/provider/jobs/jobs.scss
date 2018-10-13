@@ -1,0 +1,121 @@
+page-jobs {
+    .segment {
+        .segment-button {
+            border: none !important;
+            position: relative;
+            font-size: 1.6rem;
+            color: #fff;
+            text-transform: none;
+            font-weight: 400;
+            opacity: unset;
+            letter-spacing: .5px;
+            background: none !important;
+            border: none !important;
+            height: 4.7rem;
+            width: 100%;
+            font-weight: 300;
+            &.segment-activated {
+                font-weight: 400;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0;
+                    right: 0;
+                    width: 100px;
+                    height: 4px;
+                    margin: auto;
+                    background: #fff;
+                }
+            }
+        }
+    }
+    .list {
+        margin-top: 0;
+        margin-bottom: 0;
+        h2 {
+            &.heading {
+                font-size: 1.4rem;
+                font-weight: 300;
+                margin: 0;
+                padding: 13px 10px 10px 20px;
+                color: #bab7be;
+            }
+        }
+        .item {
+            padding-top: 4px;
+            padding-bottom: 4px;
+            margin-bottom: 2px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            ion-avatar {
+                width: 70px;
+                height: 70px;
+                position: relative;
+                overflow: hidden;
+                border-radius: 50%;
+                img {
+                    position: absolute;
+                    top: 0 !important;
+                    left: 0 !important;
+                    right: 0 !important;
+                    bottom: 0 !important;
+                    margin: auto !important;
+                    width: 75px;
+                    height: 75px;
+                    max-width: unset !important;
+                }
+            }
+            h2 {
+                font-size: 1.6rem;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                margin-bottom: 5px;
+                span {
+                    &.ml-auto {
+                        font-weight: 300;
+                        min-width: 107px;
+                        text-align: right;
+                        color: #797979;
+                        font-size: 1.1rem;
+                        margin-left: auto;
+                    }
+                }
+            }
+            p {
+                font-size: 1.1rem;
+                font-weight: 400;
+                color: #6c6c6c !important;
+                display: flex;
+                align-items: center;
+                span {
+                    &.ml-auto {
+                        margin-left: auto;
+                        font-weight: 500;
+                        font-size: 1.25rem;
+                        min-width: 53px;
+                        text-align: right;
+                    }
+                }
+            }
+            &.upcoming {
+                p {
+                    span {
+                        &.ml-auto {
+                            color: $thime-color
+                        }
+                    }
+                }
+            }
+            &.accepted {
+                p {
+                    span {
+                        &.ml-auto {
+                            color: $green-color
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

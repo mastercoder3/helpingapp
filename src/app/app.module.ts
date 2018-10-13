@@ -28,6 +28,7 @@ import {StartPage} from '../pages/startpage/start';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
+ import {PostPage} from '../pages/post/post';
 
 import {SigninPage as workersignin} from '../pages/provider/signin/signin';
 import {SignupPage as workersignup} from '../pages/provider/signup/signup';
@@ -47,7 +48,7 @@ import { PackagesPage } from '../pages/provider/packages/packages';
 import { PurchaseplanPage } from '../pages/provider/purchaseplan/purchaseplan';
 import { ReviewPage } from '../pages/provider/review/review';
 import { SelectservicePage } from '../pages/provider/selectservice/selectservice';
-
+import { Camera } from '@ionic-native/camera';
 
 //Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -59,8 +60,8 @@ import { HelperProvider } from '../providers/helper/helper';
 import { FcmProvider } from '../providers/fcm/fcm';
 import { Firebase } from '@ionic-native/firebase';
 import { Facebook } from '@ionic-native/facebook'
-import { ChatProvider } from '../providers/chat/chat';
-import { FilterDatePipe } from '../pipes/filter-date/filter-date';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { JobsPage } from '../pages/provider/jobs/jobs';
 
 const firebase = {
   apiKey: "AIzaSyAbZplqw7rUDD2Nha-hkNI8-EAHh0J771c",
@@ -113,7 +114,8 @@ const firebase = {
     ChatslistPage,
     ConatctusPage,
     MyprofilePage,
-    FilterDatePipe
+    PostPage,
+    JobsPage
 
   ],
   imports: [
@@ -166,7 +168,9 @@ const firebase = {
     AllreviewPage,
     ChatslistPage,
     ConatctusPage,
-    MyprofilePage
+    MyprofilePage,
+    PostPage,
+    JobsPage
   ],
   providers: [
     StatusBar,
@@ -179,8 +183,8 @@ const firebase = {
     FcmProvider,
     Firebase,
     Facebook,
-    ChatProvider,
-    FilterDatePipe
-  ]
+    Camera,
+    AndroidPermissions
+    ]
 })
 export class AppModule {}
