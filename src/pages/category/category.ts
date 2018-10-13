@@ -50,9 +50,5 @@ export class CategoryPage {
     });
   }
 
- listofplumber(){
-   
-   }
-
 
 }

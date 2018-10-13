@@ -55,11 +55,19 @@
                 <ion-input type="number" formControlName="rate" #rate></ion-input>
             </ion-item>
             <ion-item>
+                <ion-label class="text-grey" floating>You Location City</ion-label>
+                <ion-input type="text" formControlName="city" #city></ion-input>
+            </ion-item>
+            <ion-item>
                 <ion-label class="text-grey" floating>About yourself (2-4 lines)</ion-label>
                 <ion-textarea formControlName="detail" #detail></ion-textarea>
             </ion-item>
             </ion-list>
-        <button type="submit" class="btn" ion-button round full margin-top margin-bottom [disabled]="form.invalid || form.pristine" >Sign up now</button>
+            <ion-label class="text-grey">Picture</ion-label>
+        <img [src]="base64Image" alt="Your post picture" *ngIf="base64Image" style="width: 70px; height: 70px;">
+        <button ion-button type="button" color="secondary" (click)="takePhoto('library')" style="width: 100%; background-color: #00DE6E !important;">Choose From Gallery</button>
+        <button ion-button type="button" color="secondary" (click)="takePhoto('camera')" style="width: 100%; background-color: #00DE6E !important;">Take a Picture</button>
+        <button type="submit" class="btn" ion-button round full margin-top margin-bottom [disabled]="form.invalid || form.pristine " >Sign up now</button>
     </form>
     </div>
 </ion-content>

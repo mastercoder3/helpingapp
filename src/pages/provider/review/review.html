@@ -7,7 +7,7 @@
 <ion-content class="bg-light">
     <div class="rating-box bg-thime">
         <h6 class="text-white" text-center>Your Current rating</h6>
-        <h2 class="text-white" text-center>{{total/length}}
+        <h2 class="text-white" text-center>{{total/length || 0}}
             <ion-icon name="md-star"></ion-icon>
         </h2>
         <div class="rating">
@@ -21,33 +21,13 @@
             <button class="btn text-thime" ion-button round full (click)="allreview()">Read all reviews</button>
         </div>
     </div>
-    <!--
-    <ion-row class="details">
-        <ion-col col-6>
-            <h2>
-                <ion-icon name="md-star"></ion-icon>
-                <span>98<small>People Reviewed</small></span>
-            </h2>
-        </ion-col>
-
-        <ion-col col-6>
-            <h2>
-                <ion-icon name="md-checkmark"></ion-icon>
-                <span>128<small>Tasks  completed</small></span>
-            </h2>
-        </ion-col>
-    </ion-row>
--->
 
 
     <ion-row class="details ">
-        <ion-col col-6>
+        <ion-col col-12>
             <button ion-button full class="btn"> <ion-icon name="md-star"></ion-icon><span>{{length}} <small>People Reviewed</small></span></button>
         </ion-col>
 
-        <ion-col col-6>
-            <button ion-button full class="btn"> <ion-icon name="md-checkmark"></ion-icon>  <span>128<small>Tasks  completed</small></span> </button>
-        </ion-col>
     </ion-row>
 
 </ion-content>

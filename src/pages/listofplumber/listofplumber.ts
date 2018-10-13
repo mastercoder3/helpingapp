@@ -13,6 +13,7 @@ export class ListofplumberPage {
 
  subCatName;
  workers;
+ user;
   constructor(public navCtrl: NavController, private navParams: NavParams, private api: ApiProvider) {
 
   } 
@@ -32,7 +33,9 @@ export class ListofplumberPage {
         return {did, ...data};
       })))
       .subscribe(res => {
-        this.workers = res;
+        this.user = res;
+        this.workers = this.user.filter(data=> data.status === 'online');
+        console.log(this.workers);
       })
       
   }

@@ -52,7 +52,7 @@ export class ApiProvider {
   }
 
   updateWorker(id,data){
-    return this.afs.doc('worker/'+id).update(data);
+    return this.afs.doc('workers/'+id).update(data);
   }
 
   // ::::::::::::::::::::::::::::: Posts/Orders ::::::::::::::::::::::::::::::::::::::::
@@ -135,6 +135,14 @@ export class ApiProvider {
 
   getNewPostsRequests(){
     return this.afs.collection('newposts', ref => ref.where('status','==','active')).snapshotChanges();
+  }
+
+  getNewPostById(id){
+    return this.afs.doc('newposts/'+id).snapshotChanges();
+  }
+
+  deletePost(id){
+    return this.afs.doc('newposts/'+id).delete();
   }
 
 }

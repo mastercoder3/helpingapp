@@ -62,6 +62,8 @@ import { Firebase } from '@ionic-native/firebase';
 import { Facebook } from '@ionic-native/facebook'
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { JobsPage } from '../pages/provider/jobs/jobs';
+import { JobInformationPage } from '../pages/provider/jobinformation/jobinformation';
+import { ModalPage } from '../pages/provider/modalPage/modalPage';
 
 const firebase = {
   apiKey: "AIzaSyAbZplqw7rUDD2Nha-hkNI8-EAHh0J771c",
@@ -115,7 +117,9 @@ const firebase = {
     ConatctusPage,
     MyprofilePage,
     PostPage,
-    JobsPage
+    JobsPage,
+    JobInformationPage,
+    ModalPage
 
   ],
   imports: [
@@ -170,7 +174,9 @@ const firebase = {
     ConatctusPage,
     MyprofilePage,
     PostPage,
-    JobsPage
+    JobsPage,
+    JobInformationPage,
+    ModalPage
   ],
   providers: [
     StatusBar,

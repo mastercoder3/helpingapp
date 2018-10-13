@@ -27,7 +27,7 @@
                 <ion-input type="password" [(ngModel)]="password"></ion-input>
             </ion-item>
         </ion-list>
-        <p style="text-align: right"><a >Forgot Password?</a></p>
+        <p style="text-align: right"><a (click)="forgotPassword()" >Forgot Password?</a></p>
         <button class="btn" ion-button round full margin-top margin-bottom (click)="signin()">Continue</button>
         
         <div class="social">

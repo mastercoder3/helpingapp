@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {map} from 'rxjs/operators';
 
-import { BookingPage } from '../booking/booking';
 import { ApiProvider } from '../../../providers/api/api';
+import { JobInformationPage } from '../jobinformation/jobinformation';
 @Component({
   selector: 'page-jobs',
   templateUrl: 'jobs.html'
@@ -39,10 +39,9 @@ requests: string = "upcoming";
 
   
  JobDetails(item){
-   console.log(item);
-  //  this.navCtrl.push(BookingPage, {
-  //    id: item.did
-  //  });
+   this.navCtrl.push(JobInformationPage, {
+     id: item.did
+   });
   }
 
 

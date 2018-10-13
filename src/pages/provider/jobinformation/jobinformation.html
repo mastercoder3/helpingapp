@@ -1,0 +1,67 @@
+<ion-header class="bg-thime">
+    <ion-navbar>
+        <ion-title>Job Information</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="bg-light">
+    <ion-list class="profile">
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="{{post?.customerImage}}">
+            </ion-avatar>
+            <h2 class=""><strong class="text-ellipsis">{{post?.customerName}}</strong>
+                <!-- <ion-icon name="md-text" class="text-thime"></ion-icon> -->
+            </h2>
+            <div class="details">   
+
+                <ion-row>
+                    <ion-col col-12>
+                            <p class=""><small>Description</small><span class="text-ellipsis">{{post?.desc}} </span></p>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-6>
+                        <p class=""><small>BooKing for</small><span class="text-ellipsis">{{post?.date}}, {{post?.time}} </span></p>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-6>
+                        <p class=""><small>Category</small><span class="text-ellipsis">{{post?.category}}</span></p>
+                    </ion-col>
+                    <ion-col col-6>
+                        <p class=""><small>Service Type</small><span class="text-ellipsis">
+                            {{post?.serviceType}}</span>
+                        </p>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-6>
+                        <p class=""><small>Address</small><span class="text-ellipsis">{{post?.address}} </span></p>
+                    </ion-col>
+                    <ion-col col-6>
+                        <p class=""><small>City</small><span class="text-ellipsis">
+                            {{post?.city}}</span>
+                        </p>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-12>
+                        <a (click)="viewImage()">Click here To View the Picture.</a>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-item>
+    </ion-list>
+    <div class="btn-container">
+        <ion-row>
+            <ion-col col-12>
+                <button *ngIf="post?.status == 'active' " ion-button icon-start full class="text-green" (click)="accept()" ><ion-icon name="ios-checkmark-circle"></ion-icon>Accept</button>
+            </ion-col>
+        </ion-row>
+    </div>
+
+</ion-content>
+

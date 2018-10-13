@@ -15,6 +15,10 @@
             </h2>
             <p class="text-thime">View Profile</p>
         </ion-item>
+        <ion-item>
+                <ion-label>Online Status</ion-label>
+                <ion-toggle [(ngModel)]="status" (ionChange)="onChange()" checked="false"></ion-toggle>
+        </ion-item>
 <!-- 
         <ion-item class="" (click)="packages()">
             <h2>

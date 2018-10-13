@@ -51,6 +51,7 @@ export class ReviewPage implements OnInit {
             this.fiveStar++;
         });
       this.fPercent = (this.fiveStar/this.length)*100;
+      console.log(this.fPercent);
        this.length =  Object.keys(this.review).length;
       })
   }
