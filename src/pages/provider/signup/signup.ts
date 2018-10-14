@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FormGroup , Validators, FormBuilder} from '@angular/forms';
 import {map} from 'rxjs/operators';
-
- import { TabsPage } from '../tabs/tabs';
- import { ForgotpasswordPage } from '../forgotpassword/forgotpassword';
 import { ApiProvider } from '../../../providers/api/api';
 import { AuthProvider } from '../../../providers/auth/auth';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -97,10 +94,10 @@ export class SignupPage implements OnInit {
   }
 
   submit(form){
-    if(this.base64Image === ''){
+    if(this.base64Image === undefined){
       this.helper.presentToast('Please Choose an Image to Continue.');
     }
-    else {
+    else if(this.base64Image !== undefined){
       this.data = {
         email: form.value.email,
         password: form.value.password,
@@ -114,7 +111,7 @@ export class SignupPage implements OnInit {
         categoryId: this.categoryId,
         status: true,
         imageURL: '',
-        city: form.value.city
+        city: form.value.city.toLowerCase( )
        }
        this.auth.signup(this.data.email, this.data.password)
        .then(res => {
@@ -129,14 +126,7 @@ export class SignupPage implements OnInit {
     
   }
 
-  
-tabs(){
-   this.navCtrl.push(TabsPage);
-   }
-   
-forgotpassword(){
-   this.navCtrl.push(ForgotpasswordPage);
-   }
+
 
    create(){
       this.api.createUserWorker(this.uploadImageId, this.data)

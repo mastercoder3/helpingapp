@@ -29,6 +29,14 @@ export class ApiProvider {
     return this.afs.doc('customers/'+id).snapshotChanges();
   }
 
+  checkUser(email,password){
+    return this.afs.collection('customers', ref => ref.where('email','==',email).where('password','==',password)).valueChanges();
+  }
+
+  checkUserSiginMethod(email){
+    return this.afs.collection('customers', ref => ref.where('email','==',email).where('siginMethod','==','signup')).valueChanges();
+  }
+
 
 
   // :::::::::::::::::::::::::::::::::::::: Categories ::::::::::::::::::::::::::::::::::::::::::::

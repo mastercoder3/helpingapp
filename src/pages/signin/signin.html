@@ -14,34 +14,38 @@
         </div>
     </div>
 
-    <p class="text-grey" text-center>Continue with Facebook</p>
+    <p class="text-grey" text-center>Sigin to continue</p>
 
     <div class="form">
-        <!-- <ion-list inset padding-bottom>
-            <ion-item>
-                <ion-avatar item-start style="margin-bottom: 3px; margin-right: 28px;">
-                    <ion-icon name="md-phone-portrait" class="text-thime"></ion-icon>
-                </ion-avatar>
-                <ion-label class="text-grey" floating>Mobile Number</ion-label>
-                <ion-input type="text" value="+91 903 335 7608"></ion-input>
-            </ion-item>
-        </ion-list>
-        <button class="btn" ion-button round full margin-top margin-bottom (click)="signup()">Continue</button> -->
-        <div class="social">
-            <!-- <p class="text-light-grey" text-center>Or Continue with</p> -->
+            <form [formGroup]=form (ngSubmit)="signin(form)">
+                    <ion-list inset padding-bottom>
+                        
+                        <ion-item>
+                            <ion-label class="text-grey" floating>Email</ion-label>
+                            <ion-input type="email" formControlName="email" #email></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label class="text-grey" floating>Password</ion-label>
+                            <ion-input type="password" formControlName="password" #password></ion-input>
+                        </ion-item>
+                    </ion-list>
+                    <p style="text-align: right"><a (click)="forgotPassword()" >Forgot Password?</a></p>
+                    <button class="btn" type="submit" ion-button round full margin-top margin-bottom [disabled]="form.pristine || form.invalid" >Continue</button>
+                </form>
 
+
+        <p class="text-grey" style="text-align: left">New Here? Create an account <a (click)="signup()" >Here!</a></p>
+        <div class="social">
+                <p class="text-grey" text-center>Signin with Facebook</p>
             <ion-row>
                 <ion-col col-12>
-                    <button class="btn text-thime" ion-button round full margin-top margin-bottom (click)="signin()">Facebook</button>
+                    <button class="btn text-thime" ion-button round full margin-top margin-bottom (click)=" facebookSignin()">Facebook</button>
                 </ion-col>
-                <!-- <ion-col col-6>
-                    <button class="btn google" ion-button round full margin-top margin-bottom>Google+</button>
-                </ion-col> -->
+
             </ion-row>
         </div>
         <p>Sigin as a Service Provider - <a (tap)="start()">Click Here!</a></p>
         <div class="fixed-bottom">
-            <p class="text-grey" text-center><small>By signing up, you are agree to our <ins>terms & condition</ins></small></p>
         </div>
     </div>
 </ion-content>

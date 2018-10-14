@@ -16,20 +16,22 @@
 
     <p class="text-grey" text-center>Sign in or Sign up to continue</p>
 
-    <div class="form">
+    <div class="form" >
+            <form [formGroup]=form (ngSubmit)="signin(form)">
         <ion-list inset padding-bottom>
+            
             <ion-item>
                 <ion-label class="text-grey" floating>Email</ion-label>
-                <ion-input type="email" [(ngModel)]="email"></ion-input>
+                <ion-input type="email" formControlName="email" #email></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label class="text-grey" floating>Password</ion-label>
-                <ion-input type="password" [(ngModel)]="password"></ion-input>
+                <ion-input type="password" formControlName="password" #password></ion-input>
             </ion-item>
         </ion-list>
         <p style="text-align: right"><a (click)="forgotPassword()" >Forgot Password?</a></p>
-        <button class="btn" ion-button round full margin-top margin-bottom (click)="signin()">Continue</button>
-        
+        <button class="btn" type="submit" ion-button round full margin-top margin-bottom [disabled]="form.pristine || form.invalid" >Continue</button>
+        </form>
         <div class="social">
             <p class="text-light-grey" text-center>Or Continue with</p>
 

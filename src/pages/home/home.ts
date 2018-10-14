@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {map} from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 
 import { CategoryPage } from '../category/category';
 import { ApiProvider } from '../../providers/api/api';
 import {PostPage} from '../post/post';
+import { AutocompleteProvider } from '../../providers/autocomplete/autocomplete';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   user;
   city: string = "";
@@ -17,13 +18,18 @@ export class HomePage {
   image: string = './../../../assets/imgs/ic_beauty.png"';
 
   constructor(public navCtrl: NavController,
-    private api: ApiProvider
+    private api: ApiProvider,
+    private autoComplete: AutocompleteProvider
     ) {
 
   } 
 
   ngOnInit(){
     this.getData(localStorage.getItem('uid'));
+  }
+
+  getResult(keywords: string){
+    console.log(keywords)
   }
 
   getData(id){
@@ -59,13 +65,12 @@ export class HomePage {
     });
   }
 
-  category(){
-     
-   }
 
    newPost(){ 
      this.navCtrl.push(PostPage)
    }
+
+
 
 
 }

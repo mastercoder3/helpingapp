@@ -6,39 +6,54 @@
 
 <ion-content>
     <div class="form">
-        <ion-list no-lines>
-            <ion-item>
-                <ion-avatar item-start>
-                    <ion-icon name="md-person" class="text-thime"></ion-icon>
-                </ion-avatar>
-                <ion-label class="text-grey" floating>Enter Full Name</ion-label>
-                <ion-input type="text" value=""></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-avatar item-start>
-                    <ion-icon name="md-mail" class="text-thime"></ion-icon>
-                </ion-avatar>
-                <ion-label class="text-grey" floating>Enter Email Id</ion-label>
-                <ion-input type="text" value=""></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-avatar item-start style="margin-bottom: 3px; margin-right: 28px;">
-                    <ion-icon name="md-phone-portrait" class="text-thime"></ion-icon>
-                </ion-avatar>
-                <ion-label class="text-grey" floating>Mobile Number</ion-label>
-                <ion-input type="text" value="+91 903 335 7608"></ion-input>
-            </ion-item>
-
-            <ion-item class="otp">
-                <ion-label class="text-grey">Enter OTP Sent to adove given number</ion-label>
-                <ion-input type="password" value="1232"></ion-input>
-            </ion-item>
-        </ion-list>
-        <p class="text-grey resend">00:23 <span class="text-thime">Resend OTP</span></p>
-        <button class="btn" ion-button round full margin-top margin-bottom (click)="tabs()">Sign up now</button>
-        <p class="text-thime" text-center (click)="forgotpassword()">Forgot Password</p>
-        <div class="fixed-bottom">
-            <p class="text-grey" text-center><small>By signing up, you are agree to our <ins>terms & condition</ins></small></p>
-        </div>
+            <form [formGroup]="form" (ngSubmit)="submit(form)">
+                    <ion-list no-lines>
+                        <ion-item>
+                            <ion-avatar item-start>
+                                <ion-icon name="md-person" class="text-thime"></ion-icon>
+                            </ion-avatar>
+                            <ion-label class="text-grey" floating>Enter First Name</ion-label>
+                            <ion-input type="text" value="" formControlName="firstName" #firstName></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label class="text-grey" floating>Enter Last Name</ion-label>
+                            <ion-input type="text" formControlName="lastName" #lastName></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-avatar item-start>
+                                <ion-icon name="md-phone" class="text-thime"></ion-icon>
+                            </ion-avatar>
+                            <ion-label class="text-grey" floating>Enter Phone No.</ion-label>
+                            <ion-input type="text" formControlName="phone" #phone></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-avatar item-start>
+                                <ion-icon name="md-mail" class="text-thime"></ion-icon>
+                            </ion-avatar>
+                            <ion-label class="text-grey" floating>Enter Email</ion-label>
+                            <ion-input type="email" formControlName="email" #email></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-avatar item-start style="margin-bottom: 3px; margin-right: 28px;">
+                                <ion-icon name="md-key" class="text-thime"></ion-icon>
+                            </ion-avatar>
+                            <ion-label class="text-grey" floating>Password</ion-label>
+                            <ion-input type="password" formControlName="password" #password></ion-input>
+                        </ion-item>
+                        <ion-item>
+                                <ion-label class="text-grey" floating>Your Address</ion-label>
+                                <ion-input type="text" formControlName="address" #address></ion-input>
+                            </ion-item>
+                        <ion-item>
+                            <ion-label class="text-grey" floating>Your Location City</ion-label>
+                            <ion-input type="text" formControlName="city" #city></ion-input>
+                            </ion-item>
+                        </ion-list>
+                        <ion-label class="text-grey">Picture</ion-label>
+                    <img [src]="base64Image" alt="Your post picture" *ngIf="base64Image" style="width: 70px; height: 70px;">
+                    <button ion-button type="button" color="secondary" (click)="takePhoto('library')" style="width: 100%; background-color: #00DE6E !important;">Choose From Gallery</button>
+                    <button ion-button type="button" color="secondary" (click)="takePhoto('camera')" style="width: 100%; background-color: #00DE6E !important;">Take a Picture</button>
+                    <button type="submit" class="btn" ion-button round full margin-top margin-bottom [disabled]="form.invalid || form.pristine " >Sign up now</button>
+                </form>
     </div>
 </ion-content>

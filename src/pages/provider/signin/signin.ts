@@ -1,30 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 import { SignupPage } from '../signup/signup';
 import {TabsPage} from '../tabs/tabs';
 import { AuthProvider } from '../../../providers/auth/auth';
 import { ApiProvider } from '../../../providers/api/api';
 import { HelperProvider } from '../../../providers/helper/helper';
+
 @Component({
   selector: 'page-signin',
   templateUrl: 'signin.html'
 })
-export class SigninPage {
-  email;
-  password;
+export class SigninPage implements OnInit {
+
+
+  form: FormGroup;
 
   constructor(public navCtrl: NavController,
     private api: ApiProvider,
     private auth: AuthProvider,
-    private helper: HelperProvider
+    private helper: HelperProvider,
+    private fb: FormBuilder
     ) { 
     }
-  
-  signin(){
-    if( (this.email !== '' || this.email !== undefined ) && ( this.password !== '' || this.password !== undefined)){
+
+    ngOnInit(){
+      this.form = this.fb.group({
+        email: ['', Validators.compose([Validators.email, Validators.required])],
+        password: ['', Validators.required]
+      });
+    }  
+
+    get f() { return this.form.controls; }
+
+  signin(form){
+    let email = form.value.email;
+    let password = form.value.password;
+    if( email !== '' && password !== '' ){
       this.helper.presentLoadingDefault();
-      this.auth.login(this.email, this.password)
+      this.auth.login(email, password)
         .then(res => {
           if(res.user.emailVerified === true){
             this.auth.setPersistance().then( () => {

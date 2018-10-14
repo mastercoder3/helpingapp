@@ -37,6 +37,7 @@ export class ReviewPage implements OnInit {
       })))
       .subscribe(res => {
         this.review = res;
+        this.length = Object.keys(this.review).length;
         this.review.forEach(a => {
           this.total = this.total + a.rating;
           if(a.rating == 1)
@@ -51,8 +52,6 @@ export class ReviewPage implements OnInit {
             this.fiveStar++;
         });
       this.fPercent = (this.fiveStar/this.length)*100;
-      console.log(this.fPercent);
-       this.length =  Object.keys(this.review).length;
       })
   }
   
