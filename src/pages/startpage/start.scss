@@ -117,4 +117,17 @@ page-start {
             }
         }
     }
+
+    .active{
+        background-color: #009FF2 !important;
+        color: white !important;
+    }
+
+    .inactive{
+        background-color: none !important;
+        color: black !important;
+    }
+    ion-segment-button {
+        color: black !important;
+    }
 }

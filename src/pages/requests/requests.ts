@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 
  import { BookingPage } from '../booking/booking';
 import { ApiProvider } from '../../providers/api/api';
+import { HelperProvider } from '../../providers/helper/helper';
 @Component({
   selector: 'page-requests',
   templateUrl: 'requests.html'
@@ -12,11 +13,12 @@ export class RequestsPage implements OnInit{
   requests: string = "pending";
   posts;
   completedPosts;
-  constructor(public navCtrl: NavController, private api: ApiProvider) {
+  constructor(public navCtrl: NavController, private api: ApiProvider, private helper: HelperProvider) {
 
   } 
 
   ngOnInit(){
+    this.helper.presentLoadingDefault();
     this.getdata(localStorage.getItem('uid'));
   }
 
@@ -41,6 +43,7 @@ export class RequestsPage implements OnInit{
 
       .subscribe(res => {
         this.completedPosts = res;
+        this.helper.closeLoading();
       });
 
   }

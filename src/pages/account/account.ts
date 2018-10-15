@@ -15,7 +15,7 @@ export class AccountPage {
   user;
   image: string = './../../assets/imgs/profile2.png';
 
-  constructor(public navCtrl: NavController, private api: ApiProvider) {
+  constructor(public navCtrl: NavController, private api: ApiProvider, private app: App) {
 
   } 
 
@@ -54,7 +54,7 @@ export class AccountPage {
      
    localStorage.removeItem('uid');
    localStorage.removeItem('city');
-   this.navCtrl.setRoot(StartPage);
+   this.app.getRootNav().setRoot(StartPage);
    }
 
 }

@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 
 import { BookingPage } from '../booking/booking';
 import { ApiProvider } from '../../../providers/api/api';
+import { HelperProvider } from '../../../providers/helper/helper';
 @Component({
   selector: 'page-requests',
   templateUrl: 'requests.html'
@@ -14,8 +15,8 @@ requests: string = "upcoming";
   newPosts;
   acceptedPosts;
   completedPosts;
-  constructor(public navCtrl: NavController, private api: ApiProvider) {
-
+  constructor(public navCtrl: NavController, private api: ApiProvider, private helper: HelperProvider) {
+    this.helper.presentLoadingDefault();
   }
 
   ngOnInit(){
@@ -32,7 +33,6 @@ requests: string = "upcoming";
 
       .subscribe(res =>{
         this.newPosts = res;
-        console.log(res);
       });
 
       this.api.getCurrentPosts(id)
@@ -55,6 +55,7 @@ requests: string = "upcoming";
 
       .subscribe(res => {
         this.completedPosts = res;
+        this.helper.closeLoading();
       });
   }
 

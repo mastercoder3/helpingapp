@@ -4,8 +4,8 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="bg-light">
-    <div *ngIf="chat">
+<ion-content class="bg-light" #content>
+    <div *ngIf="chat" id="chat">
         <div *ngFor="let item of msgList">
                 <ion-card [class.send] = " userId === item.uid "
                            [class.received] = " userId !==  item.uid "
@@ -17,12 +17,12 @@
 
     </div>
 
-    <div class="fixed-bottom">
+    <div class="fixed-bottom" id="chatBox">
         <ion-row>
-            <ion-col col-2 class="">
+            <!-- <ion-col col-2 class="">
                 <p class="bg-thime" text-center>Book</p>
-            </ion-col>
-            <ion-col col-8>
+            </ion-col> -->
+            <ion-col col-10>
                 <ion-list class="" no-lines>
                     <ion-item>
                         <ion-input type="text" placeholder="Type your message" [(ngModel)]="newMsg" (keyup.enter)="sendMsg()" ></ion-input>

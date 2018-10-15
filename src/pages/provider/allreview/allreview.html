@@ -15,18 +15,21 @@
         </ion-col>
     </ion-row> -->
 
-    <ion-list no-lines class="reviews">
-        <div *ngFor="let item of review">
+    <ion-list lines class="reviews" *ngIf="review">
+        <div *ngFor="let item of review" >
         <ion-item>
             <div class="reviews-details">
                 <div class="review-img">
                     <img src="{{item?.imageURL}}">
                 </div>
-                <h2 class="text-ellipsis">{{item?.cutomerName}} <br><small class="text-green">{{item?.rating}} <ion-icon name="star" class="text-green"></ion-icon></small></h2>
+                <h2 class="text-ellipsis" style="width: 100%;">{{item?.cutomerName}}<small class="text-green" style="display: inline; float: right;" >{{item?.rating}}.0 <ion-icon name="star" class="text-green"></ion-icon></small></h2>
                 <!-- <p class="text-ellipsis">21<sup>st</sup> Jan' 18 </p> -->
+                <br>
             </div>
-            <p>{{item?.review}}</p>
+            <h4 id="review">{{item?.review | slice:0:18}}...</h4>
         </ion-item>
     </div>
+    <h2 class="text-grey" *ngIf="review.length === 0">No Review</h2>
     </ion-list>
+
 </ion-content>

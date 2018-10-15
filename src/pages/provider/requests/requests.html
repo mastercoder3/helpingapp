@@ -16,6 +16,7 @@
     <div [ngSwitch]="requests">
         <ion-list *ngSwitchCase="'upcoming'" no-lines>
                 <h2 class="heading">New Job Requests</h2>
+                <h4 class="text-grey" style="text-align:center;" *ngIf="newPosts && newPosts.length === 0"> No New Request</h4>
                 <div *ngFor="let item of newPosts">
                     <ion-item class="upcoming" (click)="booking(item)">
                         <ion-avatar item-start>
@@ -27,7 +28,7 @@
                 </div>
 
             <h2 class="heading">Upcoming Accepted Job</h2>
-            
+            <h4 class="text-grey" style="text-align: center;" *ngIf="acceptedPosts && acceptedPosts.length === 0"> No New Request</h4>
             <div *ngFor="let item of acceptedPosts">
                 <ion-item class="accepted" (click)="booking(item)">
                         <ion-avatar item-start>

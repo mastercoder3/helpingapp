@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavController, NavParams, Content } from 'ionic-angular';
 import { ApiProvider } from '../../../providers/api/api';
 import {map} from 'rxjs/operators';
+import { HelperProvider } from '../../../providers/helper/helper';
 
  //import { ListofplumberPage } from '../listofplumber/listofplumber';
 @Component({
@@ -19,16 +20,18 @@ export class ChatscreenPage implements OnInit{
   newMsg;
   chatId;
   worker;
+  @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController, private navParams: NavParams, private api: ApiProvider) {
+  constructor(public navCtrl: NavController, private navParams: NavParams, private api: ApiProvider, private helper: HelperProvider) {
     this.senderId = this.navParams.get('senderId');
     this.senderName = this.navParams.get('name');
     this.image = this.navParams.get('image');
     this.userId = localStorage.getItem('wid');
+
   }
 
   ngOnInit(){
-    this.getData(this.userId);
+    this.helper.presentLoadingDefault();
     this.checkPreviousMessages(this.senderId);
   }
 
@@ -41,7 +44,8 @@ export class ChatscreenPage implements OnInit{
       }))
       .subscribe(res => {
         this.worker = res;
-      })
+        this.scrolltoBottom();
+      });
   }
 
   checkPreviousMessages(id){
@@ -52,11 +56,13 @@ export class ChatscreenPage implements OnInit{
         return {did, ...data};
       })))
       .subscribe(res => {
-
+        this.helper.closeLoading();
         if(res.length !== 0){         
           this.chat = res[0];
           this.msgList = this.chat.messages;
           this.chatId = this.chat.did;
+          this.scrolltoBottom();
+          
         }
       });
 
@@ -71,6 +77,16 @@ export class ChatscreenPage implements OnInit{
       this.newMsg = '';
       this.chat.messages.push(data);
       this.api.updateChat(this.chatId,this.chat);
+  }
+  
+  ionViewDidLoad(){
+    this.getData( this.getData(this.userId));
+
+  }
+
+  scrolltoBottom() {
+     this.content.scrollToBottom();
+
   }
 
 }

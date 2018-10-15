@@ -4,7 +4,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="bg-light">
+<ion-content class="bg-light" >
     <ion-list no-lines *ngIf="chats">
         <div *ngFor="let item of chats; let i = index">
         <ion-item (click)="chatscreen(item)">
@@ -17,5 +17,8 @@
             <p class="text-grey text-ellipsis">{{item.messages[length[i]].message}}</p>
         </ion-item>
     </div>
+    <h2 *ngIf="chats.length === 0" style="text-align: center !important; opacity: 0.2;">NO CHATS
+        <img src="https://cdn.wccftech.com/wp-content/uploads/2018/02/Android-Messages.jpg" alt="" style="opacity:0.2">
+    </h2>
     </ion-list>
 </ion-content>

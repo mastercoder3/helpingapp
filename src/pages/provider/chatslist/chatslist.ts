@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 
 import { ChatscreenPage } from '../chatscreen/chatscreen';
 import { ApiProvider } from '../../../providers/api/api';
+import { HelperProvider } from '../../../providers/helper/helper';
 @Component({
   selector: 'page-chatslist',
   templateUrl: 'chatslist.html'
@@ -12,11 +13,12 @@ export class ChatslistPage  implements OnInit{
 
   chats;
   length=[];
-  constructor(public navCtrl: NavController, private api: ApiProvider) {
+  constructor(public navCtrl: NavController, private api: ApiProvider, private helper: HelperProvider) {
 
   } 
   
  chatscreen(item){
+   console.log(item.senderImage)
   this.navCtrl.push(ChatscreenPage,{
     senderId: item.senderId,
     name: item.senderName,
@@ -25,6 +27,7 @@ export class ChatslistPage  implements OnInit{
   }
 
   ngOnInit(){
+    this.helper.presentLoadingDefault();
     this.getData(localStorage.getItem('wid'));
   }
 
@@ -42,7 +45,7 @@ export class ChatslistPage  implements OnInit{
           this.length[x] = a.messages.length - 1 ;
           x++;
         });
-        console.log(this.length);
+        this.helper.closeLoading()
       })
   }
 

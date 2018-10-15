@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 
  import { PlumberprofilePage } from '../plumberprofile/plumberprofile';
 import { ApiProvider } from '../../providers/api/api';
+import { HelperProvider } from '../../providers/helper/helper';
 @Component({
   selector: 'page-listofplumber',
   templateUrl: 'listofplumber.html'
@@ -14,11 +15,12 @@ export class ListofplumberPage {
  subCatName;
  workers;
  user;
-  constructor(public navCtrl: NavController, private navParams: NavParams, private api: ApiProvider) {
+  constructor(public navCtrl: NavController, private navParams: NavParams, private api: ApiProvider, private helper: HelperProvider) {
 
   } 
 
   ngOnInit(){
+    this.helper.presentLoadingDefault();
     this.subCatName = this.navParams.get('name');
     let id = this.navParams.get('id');
     this.getData(id);
@@ -35,7 +37,7 @@ export class ListofplumberPage {
       .subscribe(res => {
         this.user = res;
         this.workers = this.user.filter(data=> data.status === 'online');
-        console.log(this.workers);
+        this.helper.closeLoading()
       })
       
   }

@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 
 import { ApiProvider } from '../../../providers/api/api';
 import { JobInformationPage } from '../jobinformation/jobinformation';
+import { HelperProvider } from '../../../providers/helper/helper';
 @Component({
   selector: 'page-jobs',
   templateUrl: 'jobs.html'
@@ -14,8 +15,8 @@ requests: string = "upcoming";
   newPosts;
   acceptedPosts;
   completedPosts;
-  constructor(public navCtrl: NavController, private api: ApiProvider) {
-
+  constructor(public navCtrl: NavController, private api: ApiProvider, private helper: HelperProvider) {
+    this.helper.presentLoadingDefault();
   }
 
   ngOnInit(){
@@ -32,6 +33,7 @@ requests: string = "upcoming";
 
       .subscribe(res =>{
         this.newPosts = res;
+        this.helper.closeLoading();
       });
 
   }

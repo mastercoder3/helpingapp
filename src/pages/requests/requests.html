@@ -1,6 +1,6 @@
 <ion-header class="bg-thime">
     <ion-navbar>
-        <ion-title>Requests <span><ion-icon name="md-search"></ion-icon></span></ion-title>
+        <ion-title>Requests</ion-title>
     </ion-navbar>
 
     <ion-segment [(ngModel)]="requests">
@@ -25,6 +25,9 @@
                     <p class="text-grey"><span class="text-ellipsis"><img src="assets/imgs/ruppes-icon.png"> {{item?.rate}} / per hour</span> <span class="ml-auto text-ellipsis">{{item?.date}}, {{item?.time}}</span></p>
                 </ion-item>       
              </div>    
+             <h2 *ngIf="!posts" style="text-align: center; opacity:0.2;">
+                No Orders
+            </h2>
         </ion-list>
 
         <ion-list *ngSwitchCase="'completed'" no-lines>
@@ -37,6 +40,9 @@
                 <p class="text-grey"><span class="text-ellipsis"><img src="assets/imgs/ruppes-icon.png"> 250 / per hover</span> <span class="ml-auto text-ellipsis">{{item?.date}}, {{item?.time}}</span></p>
             </ion-item>
         </div>
+        <h2 *ngIf="completedPosts.length === 0 " style="text-align: center; opacity:0.2;">
+            No Orders
+        </h2>
         </ion-list>
     </div>
     <!--    <img src="../../assets/imgs/14.png" (click)="booking()">-->

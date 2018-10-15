@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 
  import { ListofplumberPage } from '../listofplumber/listofplumber';
 import { ApiProvider } from '../../providers/api/api';
+import { HelperProvider } from '../../providers/helper/helper';
 @Component({
   selector: 'page-category',
   templateUrl: 'category.html'
@@ -17,12 +18,14 @@ export class CategoryPage {
 
   constructor(public navCtrl: NavController,
     private navParams: NavParams,
-    private api: ApiProvider
+    private api: ApiProvider,
+    private helper: HelperProvider
     ) {
 
   } 
 
   ngOnInit(){
+    this.helper.presentLoadingDefault();
     this.id = this.navParams.get('id');
     this.imageURL = this.navParams.get('imageURL');
     this.getData(this.id);
@@ -38,7 +41,7 @@ export class CategoryPage {
 
       .subscribe(res => {
         this.subCategory = res;
-        console.log(this.subCategory);
+        this.helper.closeLoading()        
       })
   }
 

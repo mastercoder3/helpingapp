@@ -6,6 +6,7 @@ import { CategoryPage } from '../category/category';
 import { ApiProvider } from '../../providers/api/api';
 import {PostPage} from '../post/post';
 import { AutocompleteProvider } from '../../providers/autocomplete/autocomplete';
+import { HelperProvider } from '../../providers/helper/helper';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -19,12 +20,14 @@ export class HomePage implements OnInit {
 
   constructor(public navCtrl: NavController,
     private api: ApiProvider,
-    private autoComplete: AutocompleteProvider
+    private autoComplete: AutocompleteProvider,
+    private helper: HelperProvider
     ) {
 
   } 
 
   ngOnInit(){
+    this.helper.presentLoadingDefault();
     this.getData(localStorage.getItem('uid'));
   }
 
@@ -42,6 +45,7 @@ export class HomePage implements OnInit {
 
       .subscribe(res => {
         this.categories = res;
+        
       });
 
       this.api.getUserCity(id)
@@ -52,7 +56,8 @@ export class HomePage implements OnInit {
         .subscribe(res => {
           this.user = res;
           this.city = this.user.data.city;
-          localStorage.setItem('city',this.city);
+          localStorage.setItem('city',this.city.toLocaleLowerCase());
+          this.helper.closeLoading();
         })
 
 

@@ -1,12 +1,12 @@
 <ion-header>
     <ion-navbar>
-        <ion-title><span class="profile"><img src="image"></span>{{senderName}} <small></small><span> <ion-icon name="md-more"></ion-icon></span></ion-title>
+        <ion-title><span class="profile"><img src="{{image}}"></span>{{senderName}} <small></small><span> <ion-icon name="md-more"></ion-icon></span></ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content class="bg-light">
+<ion-content class="bg-light" #content>
 
-        <div *ngIf="chat">
+        <div *ngIf="chat" id="chat">
                 <div *ngFor="let item of msgList">
                         <ion-card [class.send] = " userId === item.uid "
                                    [class.received] = " userId !==  item.uid "
@@ -20,10 +20,8 @@
 
     <div class="fixed-bottom">
         <ion-row>
-            <ion-col col-2 class="">
-                <p class="bg-thime" text-center>Book</p>
-            </ion-col>
-            <ion-col col-8>
+
+            <ion-col col-10>
                 <ion-list class="" no-lines>
                     <ion-item>
                         <ion-input type="text" placeholder="Type your message" [(ngModel)]="newMsg" (keyup.enter)="sendMsg()"></ion-input>

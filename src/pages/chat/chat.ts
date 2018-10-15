@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 
  import { ChatscreenPage } from '../chatscreen/chatscreen';
 import { ApiProvider } from '../../providers/api/api';
+import { HelperProvider } from '../../providers/helper/helper';
 @Component({
   selector: 'page-chat',
   templateUrl: 'chat.html'
@@ -12,7 +13,7 @@ export class ChatPage implements OnInit{
 
   chats;
   length=[];
-  constructor(public navCtrl: NavController, private api: ApiProvider) {
+  constructor(public navCtrl: NavController, private api: ApiProvider, private helper: HelperProvider) {
 
   } 
   chatscreen(item){
@@ -24,6 +25,7 @@ export class ChatPage implements OnInit{
     }
 
   ngOnInit(){ 
+    this.helper.presentLoadingDefault();
     this.getData(localStorage.getItem('uid'));
   }
 
@@ -41,7 +43,7 @@ export class ChatPage implements OnInit{
           this.length[x] = a.messages.length - 1 ;
           x++;
         });
-        console.log(this.length);
+        this.helper.closeLoading();
       })
   }
 

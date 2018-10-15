@@ -26,6 +26,10 @@ export class SigninPage {
   } 
 
   ngOnInit(){
+    localStorage.setItem('uid','JraEcOZ6ELcnXv3EN7xM3iZdfS83');
+    if(localStorage.getItem('uid')){
+      this.navCtrl.setRoot(TabsPage);
+    }
     this.form = this.fb.group({
       email: ['', Validators.compose([Validators.email, Validators.required])],
       password: ['', Validators.required]
@@ -138,7 +142,7 @@ export class SigninPage {
               this.api.createUser(this.facebook.user.uid, this.user)
                 .then(response => {
                   localStorage.setItem('uid',this.facebook.user.uid);
-                  this.navCtrl.push(TabsPage);
+                  this.navCtrl.setRoot(TabsPage);
                 }, err => {
                   console.log(err);
                 })

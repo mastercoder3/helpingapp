@@ -1,20 +1,75 @@
-<!--
+
 <ion-header>
     <ion-navbar>
-        <ion-title>Signin</ion-title>
+        <ion-title>Handyman</ion-title>
     </ion-navbar>
 </ion-header>
--->
+
 
 <ion-content>
-    <div class="logo-box bg-thime">
-        <div class="logo">
-            <img src="assets/imgs/logo.png">
-            <h1 class="text-white">HANDY<span>MAN</span></h1>
-        </div>
-    </div>
 
-    <p class="text-grey" text-center>Click Here to Continue</p>
+        <ion-segment style="margin-top: 30px !important;" [(ngModel)]="type">
+                <ion-segment-button value="worker" style="height: 100% !important;" [class.active]=" type === 'worker' " [class.inactive]=" type === 'customer' " >
+                    <img src="../../assets/imgs/serviceprovider.png" alt="" style="height: 127px !important; padding-top: 7px;">
+                    <br>
+                    Login as Service Provider
+                </ion-segment-button>
+                <ion-segment-button class="active" value="customer" style="height: 100% !important; padding-top: 2px;" [class.active]=" type === 'customer' " [class.inactive]=" type === 'worker' ">
+                    <img src="../../assets/imgs/serviceseeker1.png" alt="">
+                    <br>
+                    Login as Service Seeker
+                </ion-segment-button>
+        </ion-segment>
+
+        <div [ngSwitch]="type">
+                <ion-list *ngSwitchCase="'customer'" no-lines>
+                        <div class="form">
+                                <form [formGroup]="form1" (ngSubmit)="signinCustomer(form1)">
+                                        <ion-list inset padding-bottom>
+                                            
+                                            <ion-item>
+                                                <ion-label class="text-grey" floating>Email</ion-label>
+                                                <ion-input type="email" formControlName="email" #email></ion-input>
+                                            </ion-item>
+                                            <ion-item>
+                                                <ion-label class="text-grey" floating>Password</ion-label>
+                                                <ion-input type="password" formControlName="password" #password></ion-input>
+                                            </ion-item>
+                                        </ion-list>
+                                        <p style="text-align: right"><a (click)="forgotPassword()" >Forgot Password?</a></p>
+                                        <button class="btn" type="submit" ion-button round full margin-top margin-bottom [disabled]="form.pristine || form.invalid" >Continue</button>
+                                    </form>
+                    </div>
+                    <p style="padding-left: 10px" class="text-grey">Don't have an account? Signup <a (click)="signup" >Here.</a></p>
+                    <p style="text-align: center" class="text-grey">OR</p>
+                    <p style="padding-left: 10px" class="text-grey">Login with Facebook <a (click)="facebookSignin()" >Here.</a></p>     
+                </ion-list>
+                <ion-list *ngSwitchCase="'worker'" no-lines>
+                        <div class="form" >
+                                <form [formGroup]="form" (ngSubmit)="signin(form)">
+                            <ion-list inset padding-bottom>
+                                
+                                <ion-item>
+                                    <ion-label class="text-grey" floating>Email</ion-label>
+                                    <ion-input type="email" formControlName="email" #email></ion-input>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label class="text-grey" floating>Password</ion-label>
+                                    <ion-input type="password" formControlName="password" #password></ion-input>
+                                </ion-item>
+                            </ion-list>
+                            <p style="text-align: right"><a (click)="forgotPassword()" >Forgot Password?</a></p>
+                            <button class="btn" type="submit" ion-button round full margin-top margin-bottom [disabled]="form1.pristine || form1.invalid" >Continue</button>
+                            </form>
+                        </div>
+                        <p style="padding-left: 10px" class="text-grey">Don't have an account? Signup <a (click)="signup()" >Here.</a></p>
+                   
+                    </ion-list>
+            </div>
+
+
+
+    <!-- <p class="text-grey" text-center>Click Here to Continue</p>
 
     <div class="form">
         
@@ -38,5 +93,5 @@
         </div>
             <div class="fixed-bottom">
             </div>
-    </div>
+    </div> -->
 </ion-content>

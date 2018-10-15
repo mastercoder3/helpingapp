@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavController, NavParams, Content } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import {map} from 'rxjs/operators';
+import { HelperProvider } from '../../providers/helper/helper';
 
 @Component({
   selector: 'page-chatscreen',
@@ -20,18 +21,20 @@ export class ChatscreenPage implements OnInit {
   chatId;
   newChat: boolean = false;
   customer;
+  @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController, private navParams: NavParams, private api: ApiProvider) {
+  constructor(public navCtrl: NavController, private navParams: NavParams, private api: ApiProvider, private helper: HelperProvider) {
     this.workerId = this.navParams.get('workerId');
     this.workerName = this.navParams.get('name');
     this.image = this.navParams.get('image');
+    console.log(this.image);
     this.userId = localStorage.getItem('uid');
   }
   
   ngOnInit(){
+    this.helper.presentLoadingDefault();
     this.checkPreviousMessages(localStorage.getItem('uid'));
-    this.getData(localStorage.getItem('uid'));
-  }
+    }
 
   getData(id){
     this.api.getUserData(id)
@@ -42,6 +45,8 @@ export class ChatscreenPage implements OnInit {
       }))
       .subscribe(res => {
         this.customer = res;
+        this.helper.closeLoading();
+        this.scrolltoBottom();
       })
   }
 
@@ -84,6 +89,7 @@ export class ChatscreenPage implements OnInit {
       this.newMsg = '';
       this.chat.messages.push(data);
       this.api.updateChat(this.chatId,this.chat);
+      this.scrolltoBottom();
     }
     else if(this.newChat === true){
       let x = new Date();
@@ -96,8 +102,20 @@ export class ChatscreenPage implements OnInit {
         .then(res => {
           this.newChat = false;
           this.checkPreviousMessages(localStorage.getItem('uid'));
+          this.scrolltoBottom();
         });
     }      
+  }
+
+ 
+  ionViewDidLoad(){
+    this.getData(localStorage.getItem('uid'));
+
+  }
+
+  scrolltoBottom() {
+     this.content.scrollToBottom();
+
   }
 
 }
