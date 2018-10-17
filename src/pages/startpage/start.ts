@@ -33,6 +33,7 @@ export class StartPage implements OnInit{
     private helper: HelperProvider,
     private fb: FormBuilder
     ){
+      this.helper.getLocation();
       this.helper.presentLoadingDefault();
     if(localStorage.getItem('wid')){
       this.navCtrl.setRoot(workerHome);
@@ -112,7 +113,7 @@ signinCustomer(form){
                 else if (resp.length !== 0){
                   this.helper.closeLoading();
                   localStorage.setItem('uid', res.user.uid);
-                  this.navCtrl.push(TabsPage);
+                  this.navCtrl.setRoot(TabsPage);
                 }
               })
           });
@@ -200,7 +201,7 @@ this.helper.showPromptSignle('Reset Password','Email is required in order to rec
         let isNewUser = this.facebook.additionalUserInfo.isNewUser;
         if(isNewUser === false){
           localStorage.setItem('uid',this.facebook.user.uid);
-          this.navCtrl.push(TabsPage);
+          this.navCtrl.setRoot(TabsPage);
         }
         else if(isNewUser === true){
           //data 

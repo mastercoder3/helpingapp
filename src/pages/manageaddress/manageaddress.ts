@@ -44,10 +44,12 @@ export class ManageaddressPage implements OnInit{
         this.user.address = (res.address != '') ? res.address : this.user.address;
         this.user.city = (res.city != '' ) ? res.city : this.user.city;
         this.user.phone = (res.phone != '') ? res.phone : this.user.phone;
-
+        let cityName = this.user.city;
+        cityName = cityName.toLowerCase();
+        this.user.city = cityName;
         this.api.updateUser(localStorage.getItem('uid'),this.user)
           .then(Response => {
-            console.log('Record Updated');
+            this.helper.presentToast('Profile Updated');
           }, err => {
             console.log(err.message);
           })

@@ -37,6 +37,10 @@ export class ApiProvider {
     return this.afs.collection('customers', ref => ref.where('email','==',email).where('siginMethod','==','signup')).valueChanges();
   }
 
+  updateUserLocation(id,data){
+    return this.afs.doc('customers/'+id).update(data);
+  }
+
 
 
   // :::::::::::::::::::::::::::::::::::::: Categories ::::::::::::::::::::::::::::::::::::::::::::
@@ -55,11 +59,19 @@ export class ApiProvider {
     return this.afs.collection('workers', ref => ref.where('categoryId','==',id).where('city','==',city)).snapshotChanges();
   }
 
+  getAllWorkers(id){
+    return this.afs.collection('workers', ref => ref.where('categoryId','==',id)).snapshotChanges();
+  }
+
   getWorkerProfile(id){
     return this.afs.doc('workers/'+id).snapshotChanges();
   }
 
   updateWorker(id,data){
+    return this.afs.doc('workers/'+id).update(data);
+  }
+
+  updateWorkerLocation(id,data){
     return this.afs.doc('workers/'+id).update(data);
   }
 
@@ -101,6 +113,10 @@ export class ApiProvider {
 
   getCurrentPosts(id){
     return this.afs.collection('posts', ref => ref.where('workerId','==',id).where('postStatus','==','accepted')).snapshotChanges();
+  }
+
+  deleteOrderPost(id){
+    return this.afs.doc('posts/'+id).delete();
   }
 
   // ::::::::::::::::::::::::::::::::::::::::: Review ::::::::::::::::::::::::::::::::::::::::::::::::::

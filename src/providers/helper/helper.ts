@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AlertController, LoadingController, ModalController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { ModalPage } from '../../pages/provider/modalPage/modalPage';
+import {Geolocation} from '@ionic-native/geolocation';
 
 /*
   Generated class for the HelperProvider provider.
@@ -14,9 +15,10 @@ export class HelperProvider {
 
   loading;
   profileModal;
+  public alert: any;
 
   constructor(private alertController: AlertController,private toastCtrl: ToastController, private loadingCtrl: LoadingController,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController, private geolocation: Geolocation) {
   }
 
   showPrompt(title,msg,i1,n1,i2,n2,i3,n3,myfunc) {
@@ -54,7 +56,7 @@ export class HelperProvider {
   }
 
   showAlertWithoutInput(header,message,buttonName,myfunc){
-    const alert = this.alertController.create({
+     this.alert = this.alertController.create({
       title: header,
       message: message,
       buttons: [
@@ -63,7 +65,7 @@ export class HelperProvider {
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            alert.dismiss();
+            this.alert.dismiss();
           }
         }, {
           text: buttonName,
@@ -72,8 +74,9 @@ export class HelperProvider {
       ]
     });
 
-     alert.present();
+     this.alert.present();
   }
+
 
   showPromptSignle(title,msg,i1,n1,myfunc,btnText) {
     const prompt = this.alertController.create({
@@ -130,6 +133,14 @@ export class HelperProvider {
 
   closeModal(){
     this.profileModal.dismiss();
+  }
+
+  getLocation(){
+   return this.geolocation.getCurrentPosition();
+  }
+
+  watchLocation(){
+    return this.geolocation.watchPosition();
   }
   
   

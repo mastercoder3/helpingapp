@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar>
-        <ion-title><span><ion-icon name="md-search"></ion-icon></span></ion-title>
+        <ion-title></ion-title>
     </ion-navbar>
     <div class="logo-box bg-thime">
         <div class="logo" text-center>
@@ -11,13 +11,25 @@
 
 <ion-content>
     <ion-list no-lines>
-        <ion-item *ngFor="let item of subCategory">
+        <!-- <ion-item *ngFor="let item of subCategory">
             <div (tap)="findWorkers(item)" >
                  <h2><span class="text-ellipsis" >{{item.name}}</span>
                      <ion-icon name="ios-arrow-forward-outline"></ion-icon>
                 </h2>
             </div>
-        </ion-item>
+        </ion-item> -->
+        <ion-item *ngFor="let item of subCategory">
+            <div (tap)="findWorkers(item)">
+            <ion-avatar item-start style="float: left !important;">
+              <img src="{{item.imageURL}}">
+            </ion-avatar>
+            <div >
+                <h2>{{item.name}}</h2>
+                <h3></h3>
+                <p>{{item.lname}}</p>
+            </div>
+        </div>
+          </ion-item>
     </ion-list>
 
 </ion-content>

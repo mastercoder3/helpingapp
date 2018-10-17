@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component  } from '@angular/core';
 import { RequestsPage } from '../requests/requests';
 import { JobsPage } from '../jobs/jobs';
 import { ReviewPage } from '../review/review';
@@ -12,12 +11,12 @@ import { ChatslistPage } from '../chatslist/chatslist';
 export class TabsPage {
 
   tab1Root = RequestsPage;
-   tab2Root = JobsPage;
+  tab2Root = JobsPage;
   tab3Root = ReviewPage;
   tab4Root = AccountPage;
   tab5Root = ChatslistPage;
 
-  constructor() {
+  constructor() { }
 
-  }
+
 }

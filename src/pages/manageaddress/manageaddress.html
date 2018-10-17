@@ -11,7 +11,7 @@
         <ion-item>
             <h3>Your Address</h3>
             <p class="text-grey">
-                <ion-icon name="ios-pin"></ion-icon>{{user?.address || address}}  {{user?.city || city}}
+                <ion-icon name="ios-pin"></ion-icon>{{user?.address || address}}  {{user?.city || city | lowercase}}
             </p>
             <p class="text-grey">
                 <ion-icon name="md-phone-portrait"></ion-icon>{{user?.phone || phone}}

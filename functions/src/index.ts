@@ -8,17 +8,18 @@ exports.newMessageNotification = functions.firestore
     .onUpdate(async event => {
         const data = event.after.data();
 
+        console.log(data);
+
     const userId = data.senderId
     const receiver = data.receiverId
-    console.log(userId);
-    console.log(receiver);
+    const receiverName = data.receiverName;
+        
 
     // Notification content
     const payload = {
       notification: {
           title: 'New Message',
-          body: `${receiver} is following your content!`,
-          icon: 'https://goo.gl/Fz9nrQ'
+          body: `${receiverName} Sent you a Message.`
       }
     }
 

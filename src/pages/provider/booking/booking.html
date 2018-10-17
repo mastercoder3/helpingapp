@@ -32,7 +32,7 @@
     <div class="btn-container">
         <ion-row>
             <ion-col col-6>
-                <button ion-button icon-start full class="" [disabled]="post?.postStatus == 'inprocess' || post?.postStatus == 'completed' " ><ion-icon name="md-close"></ion-icon>Cance Job</button>
+                <button ion-button icon-start full class="" [disabled]="post?.postStatus == 'inprocess' || post?.postStatus == 'completed' " (click)="cancel()" ><ion-icon name="md-close"></ion-icon>Cance Job</button>
             </ion-col>
             <ion-col col-6>
                 <button *ngIf="post?.postStatus == 'pending' " ion-button icon-start full class="text-green" (click)="accept()" ><ion-icon name="ios-checkmark-circle"></ion-icon>Accept</button>

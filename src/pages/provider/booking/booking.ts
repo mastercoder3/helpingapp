@@ -29,12 +29,6 @@ export class BookingPage implements OnInit{
       }))
       .subscribe(res => {
         this.post = res;
-        console.log(this.post.date);
-        console.log(new Date(this.post.date).toDateString())
-        console.log(new Date(this.post.time))
-        if(new Date().toDateString() >= new Date(this.post.date).toDateString()){
-          console.log('yes')
-        }
       })
   }
 
@@ -63,18 +57,25 @@ export class BookingPage implements OnInit{
   }
 
   start(){
-    let date = new Date();
-    this.post.startTime = date;
-    let id = this.post.did;
-    delete this.post['did'];
-    this.post.postStatus = 'inprocess';
-    
-    this.api.updatePost(id, this.post)
-    .then(res => {
-      this.helper.presentToast('Job Time has been Started');
-    }, err => {
-      console.log(err.message);
-    }) 
+    let today = new Date();
+    let startDate = new Date(this.post.date);
+    if(today.getDate() === startDate.getDate() && today.getMonth() === startDate.getMonth() && today.getFullYear() === startDate.getFullYear() ){
+      let date = new Date();
+      this.post.startTime = date;
+      let id = this.post.did;
+      delete this.post['did'];
+      this.post.postStatus = 'inprocess';
+      this.api.updatePost(id, this.post)
+      .then(res => {
+        this.helper.presentToast('Job Time has been Started');
+      }, err => {
+        console.log(err.message);
+      }) 
+    }
+    else{
+      this.helper.presentToast('The Job Date has been expired');
+    }
+
   
   }
 
@@ -99,6 +100,19 @@ export class BookingPage implements OnInit{
     }, err => {
       console.log(err.message);
     }) 
+  }
+
+  cancel(){
+    let myfunc = (blah) => {
+      this.api.deleteOrderPost(this.post.did)
+        .then(res => {
+          this.helper.presentToast('The Order has been cancelled.');
+          this.navCtrl.pop();
+        }, err => {
+          this.helper.presentToast(err.message);
+        });
+    };
+    this.helper.showAlertWithoutInput('Warning!','Are you Sure that you want to cancel the job, once the job is cancelled it will not appear again.','Continue',myfunc)
   }
   
 //listofplumber(){

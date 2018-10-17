@@ -27,6 +27,8 @@ export class SignupPage implements OnInit{
   image;
   data;
   uploadImageId;
+  lat;
+  lng;
 
   constructor(public navCtrl: NavController,
     private fb: FormBuilder,
@@ -40,7 +42,7 @@ export class SignupPage implements OnInit{
       this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
         success => console.log('Permission granted'),
         err => this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA,this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE])
-      ).catch(err=> console.log(`cordova error`))
+      ).catch(err=> console.log(`cordova error`));
   } 
 
   ngOnInit(){
@@ -69,6 +71,8 @@ export class SignupPage implements OnInit{
       this.helper.presentToast('Please Choose an Image to Continue.');
     }
     else {
+      let city = form.value.city;
+      city = city.toLowerCase();
       this.data = {
         email: form.value.email,
         password: form.value.password,
@@ -79,7 +83,7 @@ export class SignupPage implements OnInit{
         address: form.value.address,
         signinMethod: 'signup',
         imageURL: '',
-        city: form.value.city.toLowerCase( )
+        city: city
        }
        this.auth.signup(this.data.email, this.data.password)
        .then(res => {

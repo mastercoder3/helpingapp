@@ -98,6 +98,8 @@ export class SignupPage implements OnInit {
       this.helper.presentToast('Please Choose an Image to Continue.');
     }
     else if(this.base64Image !== undefined){
+      let city = form.value.city;
+      city = city.toLowerCase();
       this.data = {
         email: form.value.email,
         password: form.value.password,
@@ -111,7 +113,7 @@ export class SignupPage implements OnInit {
         categoryId: this.categoryId,
         status: true,
         imageURL: '',
-        city: form.value.city.toLowerCase( )
+        city: city
        }
        this.auth.signup(this.data.email, this.data.password)
        .then(res => {

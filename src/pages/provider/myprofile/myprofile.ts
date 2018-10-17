@@ -34,7 +34,9 @@ export class MyprofilePage implements OnInit{
   }
 
   update(){
-    this.worker.city.toLowerCase( );
+    let city = this.worker.city;
+    city = city.toLowerCase();
+    this.worker.city = city;
     this.api.updateWorker(localStorage.getItem('wid'), this.worker)
       .then(res => {
         console.log('worker profile updated');

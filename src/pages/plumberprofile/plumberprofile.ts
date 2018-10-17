@@ -13,12 +13,14 @@ export class PlumberprofilePage {
 plumber: string = "about";
 worker;
 review;
+distance;
   constructor(public navCtrl: NavController, private navParams: NavParams, private api: ApiProvider) {
 
   } 
 
   ngOnInit(){
     let id = this.navParams.get('id');
+    this.distance = this.navParams.get('distance');
     this.getData(id);
   }
 

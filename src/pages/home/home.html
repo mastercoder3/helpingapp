@@ -5,8 +5,9 @@
             <span class="city" style="margin-left: 0 !important;">
                 <ion-label class="text-white">Location For service</ion-label>
                 <ion-icon name="ios-arrow-down-outline"></ion-icon>
-                <ion-select [(ngModel)]="city" class="text-white select-city">
-                        <ion-option [value]="city" class="text-ellipsis">{{city}}</ion-option>
+                <ion-select [(ngModel)]="selectedCity" class="text-white select-city" (ngModelChange)="setCity($event)" >
+                        <ion-option [value]="city.city" class="text-ellipsis">{{city.city}}</ion-option>
+                        <ion-option [value]="city.all" class="text-ellipsis" >{{city.all}}</ion-option>
                     </ion-select>
             </span>
         </ion-title>
@@ -18,8 +19,7 @@
         <img src="assets/imgs/banner.jpg">
         <h1 class="text-white">How Can We Help You Today?</h1>
     </div>
-          <ion-auto-complete [dataProvider]="autoComplete"></ion-auto-complete>
-    <ion-list>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="getItems($event)"></ion-searchbar>    <ion-list>
         <ion-item *ngFor="let item of items">
             {{ item }}
         </ion-item>
@@ -29,7 +29,7 @@
 
     <div class="home-menu">
         <ion-row>
-            <ion-col col-4 *ngFor="let item of categories">
+            <ion-col col-4 *ngFor="let item of searchCat">
                 <div class="menu-item" (tap)='selectedCategory(item)'>
                     <img src="{{item?.imageURL || image}}">
                     <p class="text-ellipsis">{{item?.name}}</p>

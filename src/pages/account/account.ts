@@ -5,6 +5,11 @@ import {map} from 'rxjs/operators';
 import { ManageaddressPage } from '../manageaddress/manageaddress';
 import { ApiProvider } from '../../providers/api/api';
 import { StartPage } from '../startpage/start';
+import { ContactPage } from '../contact/contact';
+import { PrivacyPage } from '../privacy/privacy';
+import { AboutPage } from '../about/about';
+import { FaqsPage } from '../faqs/faqs';
+
 
 @Component({
   selector: 'page-account',
@@ -56,5 +61,18 @@ export class AccountPage {
    localStorage.removeItem('city');
    this.app.getRootNav().setRoot(StartPage);
    }
+
+   contact(){
+    this.navCtrl.push(ContactPage);
+    }
+    privacy(){
+    this.navCtrl.push(PrivacyPage);
+    }
+    about(){
+    this.navCtrl.push(AboutPage);
+    }    
+    faqs(){
+    this.navCtrl.push(FaqsPage);
+    }
 
 }

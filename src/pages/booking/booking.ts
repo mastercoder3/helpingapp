@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';
 import { ApiProvider } from '../../providers/api/api';
 import { PlumberprofilePage } from '../plumberprofile/plumberprofile';
 import { HelperProvider } from '../../providers/helper/helper';
+import * as haversine from 'haversine';
 
 @Component({
   selector: 'page-booking',
@@ -18,7 +19,28 @@ export class BookingPage {
   post;
   revieww;
   user;
+  customer;
+  worker;
+  userDistance;
+  workerDistance;
+
   constructor(public navCtrl: NavController, private navParams: NavParams, private api: ApiProvider,private helper: HelperProvider) {
+    this.api.getUserData(localStorage.getItem('uid'))
+      .pipe(map(actions => {
+        const data = actions.payload.data();
+        const did = actions.payload.id;
+        return {did, ...data};
+      }))
+      .subscribe(res => {
+        this.customer = res;
+        let lat = this.customer.lat;
+        let lng = this.customer.lng;
+        this.userDistance = {
+          latitude: lat,
+          longitude: lng
+        };
+      });
+    
   }
   
   ngOnInit(){
@@ -35,12 +57,33 @@ export class BookingPage {
       }))
       .subscribe(res => {
         this.post = res;
+        if(this.post.workerId)
+          this.getWorkerProfile(this.post.workerId);
+      })
+  }
+
+  getWorkerProfile(id){
+    this.api.getWorkerProfile(this.post.workerId)
+      .pipe(map(actions => {
+        const data = actions.payload.data;
+        return {data};
+      }))
+      .subscribe(res => {
+        this.worker = res;
+        let lat = this.worker.lat;
+        let lng = this.worker.lng;
+        this.workerDistance ={
+          latitude: lat,
+          longitude: lng
+        }
       })
   }
 
   profile(){
+    let distance = haversine(this.userDistance, this.workerDistance);
     this.navCtrl.push(PlumberprofilePage, {
-      id: this.post.workerId
+      id: this.post.workerId,
+      distance: distance
     })
   }
 

@@ -49,6 +49,7 @@ import { PurchaseplanPage } from '../pages/provider/purchaseplan/purchaseplan';
 import { ReviewPage } from '../pages/provider/review/review';
 import { SelectservicePage } from '../pages/provider/selectservice/selectservice';
 import { Camera } from '@ionic-native/camera';
+import {FaqsPage as wFaq} from '../pages/provider/faqs/faqs';
 
 //Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -66,6 +67,7 @@ import { JobInformationPage } from '../pages/provider/jobinformation/jobinformat
 import { ModalPage } from '../pages/provider/modalPage/modalPage';
 import { AutoCompleteModule } from 'ionic2-auto-complete';
 import { AutocompleteProvider } from '../providers/autocomplete/autocomplete';
+import { Geolocation } from '@ionic-native/geolocation';
 
 const firebase = {
   apiKey: "AIzaSyAbZplqw7rUDD2Nha-hkNI8-EAHh0J771c",
@@ -121,8 +123,8 @@ const firebase = {
     PostPage,
     JobsPage,
     JobInformationPage,
-    ModalPage
-
+    ModalPage,
+    wFaq
   ],
   imports: [
     BrowserModule,
@@ -167,6 +169,7 @@ const firebase = {
     PackagesPage,
     PurchaseplanPage,
     ReviewPage,
+    wFaq,
     SelectservicePage,
     workeraccount,
     workerbooking,
@@ -193,6 +196,7 @@ const firebase = {
     Firebase,
     Facebook,
     Camera,
+    Geolocation,
     AndroidPermissions,
     AutocompleteProvider
     ]
